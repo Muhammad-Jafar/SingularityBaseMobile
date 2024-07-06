@@ -5,9 +5,11 @@
 package core.ui
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import core.util.systemlayer.SystemLoggerScope
 import core.util.systemlayer.SystemLoggerScopeImpl
 
+@Immutable
 data class SingularityScope(
     val unit: Unit = Unit
 ) : SystemLoggerScope by SystemLoggerScopeImpl() {
