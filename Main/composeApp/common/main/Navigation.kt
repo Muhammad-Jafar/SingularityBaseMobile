@@ -14,13 +14,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import common.StateSaver
+import core.ui.SingularityScope
 import dashboard.DashboardPane
 import example.presentation.TodoDetailPane
 import example.presentation.TodoDetailPanePld
 
 
+context(SingularityScope, MainContext)
 @Composable
-fun MainContext.MainNavigation() {
+fun MainNavigation() {
     val stateSaver = remember { StateSaver() }
     val navController = rememberNavController()
 

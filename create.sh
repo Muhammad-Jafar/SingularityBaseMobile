@@ -53,7 +53,6 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             System("core")
-            System("designsystem")
             Shared("common")
 EOF
 )

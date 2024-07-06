@@ -3,15 +3,11 @@ package dashboard
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.SheetState
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.runtime.Composable
@@ -19,31 +15,25 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import bottomsheetflow.BottomSheetFlow
 import common.StateSaver
-import designsystem.ExtraLargePadding
-import designsystem.LargePadding
-import designsystem.component.ExtraLargeSpacing
-import designsystem.component.MediumSpacing
-import designsystem.component.PrimaryButton
-import designsystem.component.SecondaryButton
-import designsystem.component.TertiaryButton
-import designsystem.component.TextLabel
-import designsystem.component.TextTitle
+import core.ui.SingularityScope
+import core.ui.designsystem.ExtraLargePadding
+import core.ui.designsystem.LargePadding
+import core.ui.designsystem.component.SFloatingActionButton
+import core.ui.designsystem.component.STextLabel
 import example.model.TodoID
-import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import system.designsystem.resources.Res
 import system.designsystem.resources.groot
 
+context(SingularityScope, Context)
 @Composable
-fun Context.DashboardPane(
+fun DashboardPane(
     gotoGroot: () -> Unit = {},
     gotoTodoDetail: (TodoID) -> Unit = {},
 ) {
@@ -86,7 +76,7 @@ fun Context.DashboardPane(
                             }
                         },
                     ) {
-                        TextLabel(title)
+                        STextLabel(title)
                     }
                 }
             }
@@ -102,7 +92,7 @@ fun Context.DashboardPane(
             }
         }
 
-        FloatingActionButton(
+        SFloatingActionButton(
             modifier = Modifier.align(Alignment.BottomEnd)
                 .padding(
                     vertical = ExtraLargePadding + LargePadding,

@@ -2,6 +2,7 @@
  * Copyright (c) 2024 Singularity Indonesia (stefanus.ayudha@gmail.com)
  * You are not allowed to remove the copyright. Unless you have a "free software" licence.
  */
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import plugin.convention.companion.ReleaseNote
 import plugin.convention.companion.Shared
 import plugin.convention.companion.System
@@ -18,6 +19,7 @@ plugins {
     id("FeatureSerialization")
     id("FeatureHttpClient")
     id("FeatureAndroidPluto")
+    id("FeatureContextReceiver")
     id("ProjectConfig")
 }
 
@@ -34,7 +36,6 @@ kotlin {
         }
         commonMain.dependencies {
             System("core")
-            System("designsystem")
             Shared("common")
             Shared("webclient")
             Shared("bottomsheetflow")

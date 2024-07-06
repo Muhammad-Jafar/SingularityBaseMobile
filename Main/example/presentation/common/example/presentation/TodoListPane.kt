@@ -36,13 +36,18 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import common.PrettyJson
 import common.StateSaver
-import designsystem.LargePadding
-import designsystem.MediumPadding
-import designsystem.component.LargeSpacing
-import designsystem.component.MediumSpacing
-import designsystem.component.TextBody
-import designsystem.component.TextLabel
-import designsystem.component.TextTitle
+import core.ui.SingularityScope
+import core.ui.designsystem.LargePadding
+import core.ui.designsystem.MediumPadding
+import core.ui.designsystem.component.SLargeCard
+import core.ui.designsystem.component.SLargeSpacing
+import core.ui.designsystem.component.SLazyColumn
+import core.ui.designsystem.component.SMediumSpacing
+import core.ui.designsystem.component.SPrimaryButton
+import core.ui.designsystem.component.STextBody
+import core.ui.designsystem.component.STextField
+import core.ui.designsystem.component.STextLabel
+import core.ui.designsystem.component.STextTitle
 import example.model.Context
 import example.model.TodoID
 import example.presentation.entity.TodoDisplay
@@ -54,8 +59,9 @@ data class TodoListPanePld(
     val unit: Unit = Unit,
 )
 
+context(SingularityScope, Context)
 @Composable
-fun Context.TodoListPane(
+fun TodoListPane(
     pld: TodoListPanePld,
     stateSaver: StateSaver,
     goToTodoDetail: (TodoID) -> Unit
@@ -65,7 +71,7 @@ fun Context.TodoListPane(
         factory = viewModelFactory {
             initializer {
                 TodoListPaneViewModel(
-                    this@TodoListPane,
+                    this@Context,
                     stateSaver.pop() ?: TodoListPaneState.SaveAble()
                 )
             }
@@ -86,8 +92,8 @@ fun Context.TodoListPane(
     ) {
 
         val platformName by states.platformName.collectAsState("")
-        TextTitle(
-            label = "Running on $platformName",
+        STextTitle(
+            text = "Running on $platformName",
             modifier = Modifier.padding(horizontal = LargePadding)
         )
 
@@ -100,7 +106,7 @@ fun Context.TodoListPane(
         val appliedFilters by states.appliedFilters.collectAsState("")
         AppliedFilters(appliedFilters = appliedFilters)
 
-        LargeSpacing()
+        SLargeSpacing()
         var clue by remember { mutableStateOf(states.searchClue.value) }
         SearchComponent(
             clue,
@@ -110,7 +116,7 @@ fun Context.TodoListPane(
             }
         )
 
-        MediumSpacing()
+        SMediumSpacing()
         ButtonFilters(
             onFilter = { filter: TodoFilter ->
                 val isAlreadySelected = states.todoFilters.value.contains(filter)
@@ -122,7 +128,7 @@ fun Context.TodoListPane(
             onClearFilter = { vm.Post(Intent.ClearFilter) }
         )
 
-        LargeSpacing()
+        SMediumSpacing()
 
         val todoListDisplay by states.todoListDisplay.collectAsState(listOf())
         val errorDisplay2 by states.listErrorDisplay.collectAsState("")
@@ -162,8 +168,8 @@ fun Context.TodoListPane(
 private fun Status(
     status: String
 ) {
-    TextLabel(
-        label = status,
+    STextLabel(
+        text = status,
         modifier = Modifier.padding(horizontal = LargePadding)
     )
 }
@@ -172,8 +178,8 @@ private fun Status(
 private fun Error(
     error: String
 ) {
-    TextLabel(
-        label = error,
+    STextLabel(
+        text = error,
         modifier = Modifier.padding(horizontal = LargePadding)
     )
 }
@@ -182,12 +188,13 @@ private fun Error(
 private fun AppliedFilters(
     appliedFilters: String
 ) {
-    TextLabel(
-        label = appliedFilters,
+    STextLabel(
+        text = appliedFilters,
         modifier = Modifier.padding(horizontal = LargePadding)
     )
 }
 
+context(SingularityScope)
 @Composable
 private fun TodoList(
     modifier: Modifier,
@@ -197,7 +204,7 @@ private fun TodoList(
     onReload: () -> Unit,
     onItemClicked: (TodoDisplay) -> Unit,
 ) {
-    LazyColumn(
+    SLazyColumn(
         modifier = modifier,
         state = scrollState,
     ) {
@@ -206,6 +213,10 @@ private fun TodoList(
                 item = it,
                 onClick = onItemClicked
             )
+        }
+
+        item {
+            SLargeSpacing()
         }
 
         item(error) {
@@ -237,10 +248,10 @@ fun Reload(
                 modifier = Modifier
                     .padding(LargePadding)
             ) {
-                TextLabel(
+                STextLabel(
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally),
-                    label = error
+                    text = error
                 )
                 Button(
                     modifier = Modifier
@@ -248,8 +259,8 @@ fun Reload(
                         .align(Alignment.End),
                     onClick = onReload
                 ) {
-                    TextLabel(
-                        label = "Reload"
+                    STextLabel(
+                        text = "Reload"
                     )
                 }
             }
@@ -257,6 +268,7 @@ fun Reload(
     }
 }
 
+context(SingularityScope)
 @Composable
 private fun ButtonFilters(
     onFilter: (TodoFilter) -> Unit,
@@ -264,43 +276,45 @@ private fun ButtonFilters(
 ) {
     Row {
 
-        LargeSpacing()
-        Button(
+        SLargeSpacing()
+        SPrimaryButton(
             onClick = { onFilter.invoke(TodoFilter.ShowCompleteOnly) }
         ) {
-            TextLabel(
-                label = "Completed"
+            STextLabel(
+                text = "Completed"
             )
         }
 
-        MediumSpacing()
-        Button(
+        SMediumSpacing()
+        SPrimaryButton(
             onClick = { onClearFilter.invoke() }
         ) {
-            TextLabel(
-                label = "Show All"
+            STextLabel(
+                text = "Show All"
             )
         }
 
     }
 }
 
+context(SingularityScope)
 @Composable
 private fun SearchComponent(
     clue: String,
     onSearch: (String) -> Unit
 ) {
-    TextField(
+    STextField(
         modifier = Modifier
             .padding(horizontal = LargePadding)
             .fillMaxWidth(),
         value = clue,
-        onValueChange = { onSearch.invoke(it) },
+        onValueChange = onSearch,
     )
 }
 
+context(SingularityScope)
 @Composable
-fun TodoItem(
+private fun TodoItem(
     item: TodoDisplay,
     onClick: (TodoDisplay) -> Unit,
 ) {
@@ -312,16 +326,17 @@ fun TodoItem(
             todo = item,
             onClick = onClick
         )
-        MediumSpacing()
+        SLargeSpacing()
     }
 }
 
+context(SingularityScope)
 @Composable
-fun TodoCard(
+private fun TodoCard(
     todo: TodoDisplay,
     onClick: (TodoDisplay) -> Unit
 ) {
-    Card(
+    SLargeCard(
         onClick = { onClick.invoke(todo) },
         colors = if (todo.selected)
             CardDefaults.cardColors(
@@ -338,20 +353,20 @@ fun TodoCard(
                 .padding(LargePadding)
         ) {
             Column {
-                TextBody(
-                    label = PrettyJson
+                STextBody(
+                    text = PrettyJson
                         .encodeToString(todo)
                 )
 
                 if (todo.selected)
-                    MediumSpacing()
+                    SMediumSpacing()
 
                 AnimatedVisibility(todo.selected) {
                     Card(
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        TextLabel(
-                            label = "Click again to open detail",
+                        STextLabel(
+                            text = "Click again to open detail",
                             modifier = Modifier
                                 .align(Alignment.CenterHorizontally)
                                 .padding(

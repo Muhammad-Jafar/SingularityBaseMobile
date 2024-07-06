@@ -7,12 +7,13 @@ plugins {
     id("CompileWasm")
     id("FeatureCoroutine")
     id("FeaturePane")
+    id("FeatureContextReceiver")
 }
 
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            System("designsystem")
+            System("core")
             Shared("simpleactivity")
         }
     }

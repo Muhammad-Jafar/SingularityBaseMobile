@@ -18,7 +18,6 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -40,13 +39,15 @@ import common.StateSaver
 import common.getPlatform
 import common.isAndroid
 import common.isIOS
-import designsystem.LargePadding
-import designsystem.MediumPadding
-import designsystem.component.LargeSpacing
-import designsystem.component.MediumSpacing
-import designsystem.component.TextBody
-import designsystem.component.TextLabel
-import designsystem.component.TextTitle
+import core.ui.SingularityScope
+import core.ui.designsystem.LargePadding
+import core.ui.designsystem.MediumPadding
+import core.ui.designsystem.component.SIconButton
+import core.ui.designsystem.component.SLargeSpacing
+import core.ui.designsystem.component.SMediumSpacing
+import core.ui.designsystem.component.STextBody
+import core.ui.designsystem.component.STextLabel
+import core.ui.designsystem.component.STextTitle
 import org.jetbrains.compose.resources.painterResource
 import system.designsystem.resources.Res
 import system.designsystem.resources.groot
@@ -56,8 +57,9 @@ data class AIChatPanePld(
     val unit: Unit = Unit
 )
 
+context(SingularityScope, Context)
 @Composable
-fun Context.AIChatPane(
+fun AIChatPane(
     pld: AIChatPanePld,
     stateSaver: StateSaver,
     onBack: () -> Unit
@@ -67,7 +69,7 @@ fun Context.AIChatPane(
         factory = viewModelFactory {
             initializer {
                 AIChatPaneViewModel(
-                    context = this@AIChatPane,
+                    context = this@Context,
                     defaultSate = stateSaver.pop() ?: AIChatPaneState.SaveAble()
                 )
             }
@@ -84,7 +86,7 @@ fun Context.AIChatPane(
             ),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(
+            SIconButton(
                 onClick = onBack
             ) {
                 Icon(
@@ -97,10 +99,10 @@ fun Context.AIChatPane(
                 painter = painterResource(Res.drawable.groot),
                 contentDescription = "Groot customer service"
             )
-            MediumSpacing()
-            TextTitle("I am Groot!")
+            SMediumSpacing()
+            STextTitle("I am Groot!")
         }
-        MediumSpacing()
+        SMediumSpacing()
 
         val chatHistoryItem by states.historyDisplayItems.collectAsState(listOf())
         LazyColumn(
@@ -112,15 +114,15 @@ fun Context.AIChatPane(
             state = listState
         ) {
             item {
-                MediumSpacing()
+                SMediumSpacing()
             }
             items(chatHistoryItem.size) { index ->
                 val item = chatHistoryItem[index]
                 PairChatBlock(historyItem = item)
-                MediumSpacing()
+                SMediumSpacing()
             }
             item {
-                LargeSpacing()
+                SLargeSpacing()
             }
         }
 
@@ -131,7 +133,7 @@ fun Context.AIChatPane(
             listState.animateScrollToItem(chatHistoryItem.size - 1 + 1 /**because we have spacer**/)
         }
 
-        MediumSpacing()
+        SMediumSpacing()
 
         var prompt by remember { mutableStateOf("") }
         TextField(
@@ -142,7 +144,7 @@ fun Context.AIChatPane(
                 .fillMaxWidth(),
             value = prompt,
             placeholder = {
-                TextLabel("Enter Prompt")
+                STextLabel("Enter Prompt")
             },
             onValueChange = { prompt = it },
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
@@ -157,17 +159,17 @@ fun Context.AIChatPane(
 
         when {
             platform.isAndroid() -> {
-                LargeSpacing()
-                LargeSpacing()
+                SLargeSpacing()
+                SLargeSpacing()
             }
 
             platform.isIOS() -> {
-                LargeSpacing()
-                LargeSpacing()
+                SLargeSpacing()
+                SLargeSpacing()
             }
 
             else -> {
-                LargeSpacing()
+                SLargeSpacing()
             }
         }
     }
@@ -179,7 +181,7 @@ fun PairChatBlock(
 ) {
     Column {
         ChatBlock(message = historyItem.message)
-        MediumSpacing()
+        SMediumSpacing()
         ChatAnswerBlock(message = historyItem.answer)
     }
 }
@@ -203,8 +205,8 @@ fun ChatBlock(
                 containerColor = MaterialTheme.colorScheme.surfaceContainerLow
             )
         ) {
-            TextBody(
-                label = message,
+            STextBody(
+                text = message,
                 modifier = Modifier
                     .padding(
                         horizontal = LargePadding,
@@ -234,8 +236,8 @@ fun ChatAnswerBlock(
                 containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
             )
         ) {
-            TextBody(
-                label = message,
+            STextBody(
+                text = message,
                 modifier = Modifier
                     .padding(
                         horizontal = LargePadding,

@@ -16,16 +16,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import designsystem.LargePadding
-import designsystem.component.ExtraLargeSpacing
-import designsystem.component.LargeSpacing
-import designsystem.component.MediumSpacing
-import designsystem.component.ParagraphSpacing
-import designsystem.component.TextBody
-import designsystem.component.TextHeadline1
-import designsystem.component.TextHeadline2
-import designsystem.component.TextLabel
-import designsystem.component.TextTitle
+import core.ui.designsystem.LargePadding
+import core.ui.designsystem.component.SExtraLargeSpacing
+import core.ui.designsystem.component.SLargeSpacing
+import core.ui.designsystem.component.SMediumSpacing
+import core.ui.designsystem.component.SParagraphSpacing
+import core.ui.designsystem.component.STextBody
+import core.ui.designsystem.component.STextHeadline1
+import core.ui.designsystem.component.STextHeadline2
+import core.ui.designsystem.component.STextLabel
+import core.ui.designsystem.component.STextTitle
 import org.jetbrains.compose.resources.painterResource
 import system.designsystem.resources.Res
 import system.designsystem.resources.ahmad_shufyan
@@ -43,30 +43,30 @@ fun PrologPane() {
     ) {
 
         item {
-            ExtraLargeSpacing()
+            SExtraLargeSpacing()
             Image(
                 modifier = Modifier.size(90.dp),
                 painter = painterResource(Res.drawable.logo_of_singularity_indonesia),
                 contentDescription = "Singularity Indonesia"
             )
-            TextTitle("Singularity Indonesia Present")
-            TextBody(
-                label = "This app is for educational purpose only, to demonstrate Singularity Indonesia's Multiplatform Codebase Kotlin. The source code of this app is free to use, and distributed freely under Creative Common license — Under the name of Singularity Indonesia.",
+            STextTitle("Singularity Indonesia Present")
+            STextBody(
+                text = "This app is for educational purpose only, to demonstrate Singularity Indonesia's Multiplatform Codebase Kotlin. The source code of this app is free to use, and distributed freely under Creative Common license — Under the name of Singularity Indonesia.",
             )
-            ParagraphSpacing()
-            TextBody(
-                label = "Follow the link bellow to download the source code of this app."
+            SParagraphSpacing()
+            STextBody(
+                text = "Follow the link bellow to download the source code of this app."
             )
-            TextBody(
+            STextBody(
                 "https://github.com/SingularityIndonesia/SingularityBaseMobile/",
                 color = MaterialTheme.colorScheme.tertiary,
             )
-            ParagraphSpacing()
-            TextHeadline1(
-                label = "Team and Contributors"
+            SParagraphSpacing()
+            STextHeadline1(
+                text = "Team and Contributors"
             )
-            TextHeadline2(
-                label = "Project Manager"
+            STextHeadline2(
+                text = "Project Manager"
             )
             Avatar(
                 painter = painterResource(Res.drawable.logo_of_singularity_indonesia_circle),
@@ -74,8 +74,8 @@ fun PrologPane() {
                 linkedInID = "stefanus-ayudha-447a98b5",
                 email = "stefanus.ayudha@gmail.com"
             )
-            TextHeadline2(
-                label = "System designer"
+            STextHeadline2(
+                text = "System designer"
             )
             Avatar(
                 painter = painterResource(Res.drawable.ahmad_shufyan),
@@ -84,10 +84,10 @@ fun PrologPane() {
                 email = "shufyan32@gmail.com"
             )
 
-            ExtraLargeSpacing()
-            ExtraLargeSpacing()
-            ExtraLargeSpacing()
-            ExtraLargeSpacing()
+            SExtraLargeSpacing()
+            SExtraLargeSpacing()
+            SExtraLargeSpacing()
+            SExtraLargeSpacing()
         }
     }
 }
@@ -112,25 +112,25 @@ fun Avatar(
                 contentDescription = name
             )
         }
-        LargeSpacing()
+        SLargeSpacing()
         Column {
-            TextBody(
-                label = name
+            STextBody(
+                text = name
             )
-            MediumSpacing()
+            SMediumSpacing()
             Row {
-                TextLabel("Linkedin:")
-                MediumSpacing()
-                TextLabel(
-                    label = linkedInID,
+                STextLabel("Linkedin:")
+                SMediumSpacing()
+                STextLabel(
+                    text = linkedInID,
                     color = MaterialTheme.colorScheme.tertiary
                 )
             }
             Row {
-                TextLabel("Email:")
-                MediumSpacing()
-                TextLabel(
-                    label = email,
+                STextLabel("Email:")
+                SMediumSpacing()
+                STextLabel(
+                    text = email,
                     color = MaterialTheme.colorScheme.tertiary
                 )
             }

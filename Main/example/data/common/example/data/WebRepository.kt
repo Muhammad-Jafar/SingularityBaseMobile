@@ -4,7 +4,7 @@
  */
 package example.data
 
-import core.context.WebRepositoryContext
+import core.util.context.WebRepositoryContext
 import example.model.Todo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

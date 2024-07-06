@@ -2,7 +2,7 @@
  * Copyright (c) 2024 Singularity Indonesia (stefanus.ayudha@gmail.com)
  * You are not allowed to remove the copyright. Unless you have a "free software" licence.
  */
-package designsystem.component
+package core.ui.designsystem.component
 
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
@@ -13,37 +13,37 @@ import androidx.compose.ui.Modifier
 
 
 @Composable
-fun SmallSpacing() {
+fun SSmallSpacing() {
     Spacer(
-        modifier = Modifier.size(designsystem.SmallSpacing)
+        modifier = Modifier.size(core.ui.designsystem.SmallSpacing)
     )
 }
 
 @Composable
-fun MediumSpacing() {
+fun SMediumSpacing() {
     Spacer(
-        modifier = Modifier.size(designsystem.MediumSpacing)
+        modifier = Modifier.size(core.ui.designsystem.MediumSpacing)
     )
 }
 
 @Composable
-fun LargeSpacing() {
+fun SLargeSpacing() {
     Spacer(
-        modifier = Modifier.size(designsystem.LargeSpacing)
+        modifier = Modifier.size(core.ui.designsystem.LargeSpacing)
     )
 }
 
 @Composable
-fun ExtraLargeSpacing() {
+fun SExtraLargeSpacing() {
     Spacer(
-        modifier = Modifier.size(designsystem.ExtraLargeSpacing)
+        modifier = Modifier.size(core.ui.designsystem.ExtraLargeSpacing)
     )
 }
 
 @Composable
-fun ParagraphSpacing() {
+fun SParagraphSpacing() {
     Spacer(
-        modifier = Modifier.size(designsystem.ParagraphSpacing)
+        modifier = Modifier.size(core.ui.designsystem.ParagraphSpacing)
     )
 }
 

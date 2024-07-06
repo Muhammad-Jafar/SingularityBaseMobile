@@ -1,6 +1,6 @@
 package webclient
 
-import core.context.WebClient
+import core.util.context.WebClient
 
 actual fun defaultWebClient(
     host: String,

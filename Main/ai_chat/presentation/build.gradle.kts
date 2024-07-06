@@ -11,13 +11,13 @@ plugins {
     id("FeaturePane")
     id("FeatureSerialization")
     id("FeatureHttpClient")
+    id("FeatureContextReceiver")
 }
 
 kotlin {
     sourceSets {
         commonMain.dependencies {
             System("core")
-            System("designsystem")
             Shared("common")
             Shared("gemini")
 

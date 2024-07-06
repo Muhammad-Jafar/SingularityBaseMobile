@@ -6,12 +6,14 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import common.StateSaver
+import core.ui.SingularityScope
 import example.model.TodoID
 import example.presentation.TodoListPane
 import example.presentation.TodoListPanePld
 
+context(SingularityScope, Context)
 @Composable
-fun Context.DashboardTabNavigation(
+fun DashboardTabNavigation(
     navController: NavHostController,
     stateSaver: StateSaver,
     goToTodoDetail: (TodoID) -> Unit,

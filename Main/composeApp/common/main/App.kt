@@ -7,18 +7,16 @@ package main
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import common.getPlatform
 import common.isIOS
-import designsystem.SingularityTheme
+import core.ui.SingularityApp
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
@@ -37,19 +35,14 @@ fun App() {
                 it.minus(0.dp)
         }
 
-    SingularityTheme {
-        // A surface container using the 'background' color from the theme
-        Surface(
-            modifier = Modifier.fillMaxSize(),
+    SingularityApp {
+        Box(
+            modifier = Modifier
+                .padding(top = topPadding)
+                .imePadding()
         ) {
-            Box(
-                modifier = Modifier
-                    .padding(top = topPadding)
-                    .imePadding()
-            ) {
-                with(context) {
-                    MainNavigation()
-                }
+            with(context) {
+                MainNavigation()
             }
         }
     }

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -18,12 +19,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import designsystem.component.ExtraLargeSpacing
-import designsystem.component.MediumSpacing
-import designsystem.component.PrimaryButton
-import designsystem.component.SecondaryButton
-import designsystem.component.TertiaryButton
-import designsystem.component.TextTitle
+import core.ui.SingularityApp
+import core.ui.SingularityScope
+import core.ui.designsystem.component.SExtraLargeSpacing
+import core.ui.designsystem.component.SMediumSpacing
+import core.ui.designsystem.component.SPrimaryButton
+import core.ui.designsystem.component.SSecondaryButton
+import core.ui.designsystem.component.STertiaryButton
+import core.ui.designsystem.component.STextTitle
 import kotlinx.coroutines.launch
 import simpleactivity.SimpleActivity
 
@@ -33,31 +36,34 @@ class BottomSheetFlowPreviewActivity : SimpleActivity() {
     override fun App() {
         var showSheet by remember { mutableStateOf(false) }
 
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .imePadding()
-        ) {
-            PrimaryButton(
-                label = "Open Bottom Sheet",
-                modifier = Modifier.align(Alignment.Center),
+        SingularityApp {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .imePadding()
             ) {
-                showSheet = true
-            }
-        }
-
-        if (showSheet)
-            BottomSheetInput(
-                onCancel = {
-                    showSheet = false
-                },
-                onFinish = {
-                    showSheet = false
+                SPrimaryButton(
+                    onClick = { showSheet = true },
+                    modifier = Modifier.align(Alignment.Center),
+                ) {
+                    Text(text = "Open Bottom Sheet")
                 }
-            )
+            }
+
+            if (showSheet)
+                BottomSheetInput(
+                    onCancel = {
+                        showSheet = false
+                    },
+                    onFinish = {
+                        showSheet = false
+                    }
+                )
+        }
     }
 }
 
+context(SingularityScope)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BottomSheetInput(
@@ -162,6 +168,7 @@ fun BottomSheetInput(
     }
 }
 
+context(SingularityScope)
 @Composable
 fun Sheet1(
     onBack: () -> Unit,
@@ -169,34 +176,38 @@ fun Sheet1(
     onCancel: () -> Unit
 ) {
     Column {
-        TextTitle(
+        STextTitle(
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            label = "Input 1"
+            text = "Input 1"
         )
-        ExtraLargeSpacing()
+        SExtraLargeSpacing()
         Row {
-            TertiaryButton(
+            STertiaryButton(
+                onClick = onCancel,
                 modifier = Modifier.weight(1f),
-                label = "Cancel",
-                onClick = onCancel
-            )
-            MediumSpacing()
-            SecondaryButton(
+            ) {
+                Text(text = "Cancel")
+            }
+            SMediumSpacing()
+            SSecondaryButton(
+                onClick = onBack,
                 modifier = Modifier.weight(1f),
-                label = "Back",
-                onClick = onBack
-            )
-            MediumSpacing()
-            PrimaryButton(
+            ) {
+                Text(text = "Back")
+            }
+            SMediumSpacing()
+            SPrimaryButton(
                 modifier = Modifier.weight(1f),
-                label = "Next",
                 onClick = onNext
-            )
+            ) {
+                Text(text = "Next")
+            }
         }
-        ExtraLargeSpacing()
+        SExtraLargeSpacing()
     }
 }
 
+context(SingularityScope)
 @Composable
 fun Sheet2(
     onBack: () -> Unit,
@@ -204,36 +215,40 @@ fun Sheet2(
     onCancel: () -> Unit
 ) {
     Column {
-        TextTitle(
+        STextTitle(
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            label = "Input 2"
+            text = "Input 2"
         )
-        ExtraLargeSpacing()
+        SExtraLargeSpacing()
         Row(
             modifier = Modifier.align(Alignment.End)
         ) {
-            TertiaryButton(
+            STertiaryButton(
                 modifier = Modifier.weight(1f),
-                label = "Cancel",
                 onClick = onCancel
-            )
-            MediumSpacing()
-            SecondaryButton(
+            ) {
+                Text(text = "Cancel")
+            }
+            SMediumSpacing()
+            SSecondaryButton(
                 modifier = Modifier.weight(1f),
-                label = "Back",
                 onClick = onBack
-            )
-            MediumSpacing()
-            PrimaryButton(
+            ) {
+                Text(text = "Back")
+            }
+            SMediumSpacing()
+            SPrimaryButton(
                 modifier = Modifier.weight(1f),
-                label = "Next",
                 onClick = onNext
-            )
+            ) {
+                Text(text = "Next")
+            }
         }
-        ExtraLargeSpacing()
+        SExtraLargeSpacing()
     }
 }
 
+context(SingularityScope)
 @Composable
 fun Sheet3(
     onBack: () -> Unit,
@@ -241,32 +256,35 @@ fun Sheet3(
     onCancel: () -> Unit
 ) {
     Column {
-        TextTitle(
+        STextTitle(
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            label = "Input 1"
+            text = "Input 1"
         )
-        ExtraLargeSpacing()
+        SExtraLargeSpacing()
         Row(
             modifier = Modifier.align(Alignment.End)
         ) {
-            TertiaryButton(
+            STertiaryButton(
                 modifier = Modifier.weight(1f),
-                label = "Cancel",
                 onClick = onCancel
-            )
-            MediumSpacing()
-            SecondaryButton(
+            ) {
+                Text(text = "Cancel")
+            }
+            SMediumSpacing()
+            SSecondaryButton(
                 modifier = Modifier.weight(1f),
-                label = "Back",
                 onClick = onBack
-            )
-            MediumSpacing()
-            PrimaryButton(
+            ) {
+                Text(text = "Back")
+            }
+            SMediumSpacing()
+            SPrimaryButton(
                 modifier = Modifier.weight(1f),
-                label = "Finish",
                 onClick = onFinish
-            )
+            ) {
+                Text(text = "Finish")
+            }
         }
-        ExtraLargeSpacing()
+        SExtraLargeSpacing()
     }
 }
