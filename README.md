@@ -21,7 +21,7 @@ This codebase comes with Groot AI assistant module as example of Gemini AI integ
   <img src="Docs/Groot2.jpeg" width="200">
 </p>
 
-### Associative System Layering
+### Associative System Layering (Finally, Context Receiver is ready to use 🥳)
 This codebase is designed with a layering system. This allows you to add business layers to your codebase. The layering system uses the context receiver to wrap your application with a business scope (your company's scope context). The layers are designed to be associative (order-independent) make the layering process fully horizontal scales. See: `core.util.systemlayer`. In this codebase, I provide an example of a system logger layer that monitors all user interactions such as navigation, touching the screen, and component click actions.
 ### Plugins
 - **Postman WebClient Generator Plugin**. This codebase is equipped with the web Postman WebClient Generator gradle plugin. Once you enable this plugin in module gradle, all you need to do is put postman collection to the module. This plugin will automatically convert the postmant collection into web clients and generate all the response, request, header - models automatically. See [Postman WebClient Generator Plugin plugin](Docs/Postman%20Client%20Generator.md).
@@ -72,10 +72,6 @@ I would love to know what you need. If you need a module, feel free to request f
 
 ## Contributing
 Read [README_CONTRIBUTING.md](Docs/Contributing)
-
-## Temporary
-It's unfortunate that the Kotlin context receiver feature is currently only available on the JVM.
-However, the Kotlin team is actively working on it. Once the context receiver is ready, the design of this codebase will be finalized.
 
 ## Tips
 ### Make directory look better
