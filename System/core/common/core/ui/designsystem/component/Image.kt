@@ -112,7 +112,7 @@ fun SSmallLogo(
     /*contentScale: ContentScale = ContentScale.Fit,*/
     /*alpha: Float = DefaultAlpha,*/
     /*colorFilter: ColorFilter? = null*/
-    onClick: () -> Unit
+    onClick: () -> Unit = {}
 ) {
     Card(
         onClick = {
@@ -176,7 +176,7 @@ fun SLargeLogo(
     /*contentScale: ContentScale = ContentScale.Fit,*/
     /*alpha: Float = DefaultAlpha,*/
     /*colorFilter: ColorFilter? = null*/
-    onClick: () -> Unit
+    onClick: () -> Unit = {}
 ) {
     Card(
         onClick = {

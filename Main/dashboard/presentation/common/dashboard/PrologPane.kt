@@ -20,6 +20,7 @@ import core.ui.designsystem.component.SLargeSpacing
 import core.ui.designsystem.component.SMediumLogo
 import core.ui.designsystem.component.SMediumSpacing
 import core.ui.designsystem.component.SParagraphSpacing
+import core.ui.designsystem.component.SSmallLogo
 import core.ui.designsystem.component.STextBody
 import core.ui.designsystem.component.STextHeadline1
 import core.ui.designsystem.component.STextHeadline2
@@ -103,7 +104,7 @@ fun AvatarCard(
     Row(
         verticalAlignment = Alignment.CenterVertically
     ) {
-        SMediumLogo(
+        SSmallLogo(
             painter = painter,
             contentDescription = name
         )
