@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonElevation
 import androidx.compose.material3.CircularProgressIndicator
@@ -19,16 +18,10 @@ import androidx.compose.material3.IconButtonColors
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import core.ui.SingularityScope
-
-private var buttonShapeCached: Shape? = null
-private var primaryButtonColorCached: ButtonColors? = null
 
 context(SingularityScope)
 @Composable
@@ -45,15 +38,6 @@ fun SPrimaryButton(
     isLoading: Boolean = false,
     content: @Composable RowScope.() -> Unit,
 ) {
-    val buttonColorsBuilder = primaryButtonColorCached ?: ButtonDefaults.buttonColors()
-        .also { primaryButtonColorCached = it }
-
-    val buttonColors by remember { derivedStateOf { buttonColorsBuilder } }
-
-    val buttonShapeBuilder = buttonShapeCached ?: ButtonDefaults.shape
-        .also { buttonShapeCached = it }
-
-    val buttonShape by remember(buttonShapeBuilder) { derivedStateOf { buttonShapeBuilder } }
 
     Button(
         modifier = modifier,
@@ -63,8 +47,8 @@ fun SPrimaryButton(
                 onClick.invoke()
         },
         enabled = enabled,
-        shape = buttonShape,
-        colors = buttonColors,
+        shape = ButtonDefaults.shape,
+        colors = ButtonDefaults.buttonColors(),
         elevation = elevation,
         border = null,
         contentPadding = contentPadding,
@@ -80,8 +64,6 @@ fun SPrimaryButton(
             content()
     }
 }
-
-private var secondaryButtonColorCached: ButtonColors? = null
 
 context(SingularityScope)
 @Composable
@@ -102,19 +84,6 @@ fun SSecondaryButton(
     content: @Composable RowScope.() -> Unit,
 ) {
 
-    val colorBuilder = secondaryButtonColorCached ?: ButtonDefaults.buttonColors().copy(
-        containerColor = MaterialTheme.colorScheme.secondary,
-        contentColor = MaterialTheme.colorScheme.onSecondary
-    ).also { secondaryButtonColorCached = it }
-
-    val buttonColors by remember(colorBuilder) { derivedStateOf { colorBuilder } }
-
-    // fixme: still triggering recomposition
-    val buttonShapeBuilder = buttonShapeCached ?: ButtonDefaults.shape
-        .also { buttonShapeCached = it }
-
-    val buttonShape by remember(buttonShapeBuilder) { derivedStateOf { buttonShapeBuilder } }
-
     Button(
         modifier = modifier,
         onClick = {
@@ -123,8 +92,11 @@ fun SSecondaryButton(
                 onClick.invoke()
         },
         enabled = enabled,
-        shape = buttonShape,
-        colors = buttonColors,
+        shape = ButtonDefaults.shape,
+        colors = ButtonDefaults.buttonColors().copy(
+            containerColor = MaterialTheme.colorScheme.secondary,
+            contentColor = MaterialTheme.colorScheme.onSecondary
+        ),
         elevation = elevation,
         border = null,
         contentPadding = contentPadding,
@@ -140,8 +112,6 @@ fun SSecondaryButton(
             content()
     }
 }
-
-private var tertiaryButtonColorCached: ButtonColors? = null
 
 context(SingularityScope)
 @Composable
@@ -162,19 +132,6 @@ fun STertiaryButton(
     content: @Composable RowScope.() -> Unit,
 ) {
 
-    val colorBuilder = tertiaryButtonColorCached ?: ButtonDefaults.buttonColors().copy(
-        containerColor = MaterialTheme.colorScheme.tertiary,
-        contentColor = MaterialTheme.colorScheme.onTertiary
-    ).also { tertiaryButtonColorCached = it }
-
-    val buttonColors by remember(colorBuilder) { derivedStateOf { colorBuilder } }
-
-    // fixme: still triggering recomposition
-    val buttonShapeBuilder = buttonShapeCached ?: ButtonDefaults.shape
-        .also { buttonShapeCached = it }
-
-    val buttonShape by remember(buttonShapeBuilder) { derivedStateOf { buttonShapeBuilder } }
-
     Button(
         modifier = modifier,
         onClick = {
@@ -183,8 +140,11 @@ fun STertiaryButton(
                 onClick.invoke()
         },
         enabled = enabled,
-        shape = buttonShape,
-        colors = buttonColors,
+        shape = ButtonDefaults.shape,
+        colors = ButtonDefaults.buttonColors().copy(
+            containerColor = MaterialTheme.colorScheme.tertiary,
+            contentColor = MaterialTheme.colorScheme.onTertiary
+        ),
         elevation = elevation,
         border = null,
         contentPadding = contentPadding,
