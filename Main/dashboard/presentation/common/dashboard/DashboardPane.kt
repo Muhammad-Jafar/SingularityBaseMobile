@@ -1,15 +1,11 @@
 package dashboard
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Tab
-import androidx.compose.material3.TabRow
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -25,6 +21,7 @@ import core.ui.SingularityScope
 import core.ui.designsystem.ExtraLargePadding
 import core.ui.designsystem.LargePadding
 import core.ui.designsystem.component.SFloatingActionButton
+import core.ui.designsystem.component.SMediumIcon
 import core.ui.designsystem.component.STab
 import core.ui.designsystem.component.STabRow
 import core.ui.designsystem.component.STextLabel
@@ -104,8 +101,7 @@ fun DashboardPane(
                 gotoGroot.invoke()
             }
         ) {
-            Image(
-                modifier = Modifier.size(30.dp),
+            SMediumIcon(
                 painter = painterResource(Res.drawable.groot),
                 contentDescription = "Groot customer service"
             )

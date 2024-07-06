@@ -7,18 +7,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import core.ui.SingularityScope
 import core.ui.designsystem.LargePadding
 import core.ui.designsystem.component.SExtraLargeSpacing
 import core.ui.designsystem.component.SLargeSpacing
+import core.ui.designsystem.component.SMediumLogo
 import core.ui.designsystem.component.SMediumSpacing
 import core.ui.designsystem.component.SParagraphSpacing
 import core.ui.designsystem.component.STextBody
@@ -32,6 +31,7 @@ import system.designsystem.resources.ahmad_shufyan
 import system.designsystem.resources.logo_of_singularity_indonesia
 import system.designsystem.resources.logo_of_singularity_indonesia_circle
 
+context(SingularityScope)
 @Composable
 fun PrologPane() {
 
@@ -68,7 +68,7 @@ fun PrologPane() {
             STextHeadline2(
                 text = "Project Manager"
             )
-            Avatar(
+            AvatarCard(
                 painter = painterResource(Res.drawable.logo_of_singularity_indonesia_circle),
                 name = "Stefanus Ayudha",
                 linkedInID = "stefanus-ayudha-447a98b5",
@@ -77,7 +77,7 @@ fun PrologPane() {
             STextHeadline2(
                 text = "System designer"
             )
-            Avatar(
+            AvatarCard(
                 painter = painterResource(Res.drawable.ahmad_shufyan),
                 name = "Ahmad Shufyan",
                 linkedInID = "ahmad-shufyan-319639200",
@@ -92,8 +92,9 @@ fun PrologPane() {
     }
 }
 
+context(SingularityScope)
 @Composable
-fun Avatar(
+fun AvatarCard(
     painter: Painter,
     name: String,
     linkedInID: String,
@@ -102,16 +103,10 @@ fun Avatar(
     Row(
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Card(
-            modifier = Modifier.size(90.dp),
-            shape = CircleShape,
-        ) {
-            Image(
-                painter = painter,
-                contentScale = ContentScale.Fit,
-                contentDescription = name
-            )
-        }
+        SMediumLogo(
+            painter = painter,
+            contentDescription = name
+        )
         SLargeSpacing()
         Column {
             STextBody(
