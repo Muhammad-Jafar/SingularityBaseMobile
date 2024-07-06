@@ -61,7 +61,9 @@ class TodoListPaneState(
 class TodoListPaneStateReducer(
     state: TodoListPaneState
 ) {
-    val platformName = flowOf(getPlatform().name)
+    val platformName = flowOf(getPlatform().name).map {
+        "Running on $it"
+    }
 
     val dataIsNotLoaded = state.todoListDataState.map {
         it is VmIdle

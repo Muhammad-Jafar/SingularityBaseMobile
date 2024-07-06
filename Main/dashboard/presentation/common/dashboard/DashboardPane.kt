@@ -25,6 +25,8 @@ import core.ui.SingularityScope
 import core.ui.designsystem.ExtraLargePadding
 import core.ui.designsystem.LargePadding
 import core.ui.designsystem.component.SFloatingActionButton
+import core.ui.designsystem.component.STab
+import core.ui.designsystem.component.STabRow
 import core.ui.designsystem.component.STextLabel
 import example.model.TodoID
 import org.jetbrains.compose.resources.painterResource
@@ -62,11 +64,11 @@ fun DashboardPane(
     ) {
 
         Column {
-            TabRow(
+            STabRow(
                 selectedTabIndex = selectedTabIndex,
             ) {
                 tabs.mapIndexed { index, title ->
-                    Tab(
+                    STab(
                         modifier = Modifier.height(60.dp),
                         selected = index == selectedTabIndex,
                         onClick = {

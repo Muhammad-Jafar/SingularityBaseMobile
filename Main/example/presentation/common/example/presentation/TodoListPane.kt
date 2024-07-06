@@ -44,6 +44,7 @@ import core.ui.designsystem.component.SLargeSpacing
 import core.ui.designsystem.component.SLazyColumn
 import core.ui.designsystem.component.SMediumSpacing
 import core.ui.designsystem.component.SPrimaryButton
+import core.ui.designsystem.component.SSearchComponent
 import core.ui.designsystem.component.STextBody
 import core.ui.designsystem.component.STextField
 import core.ui.designsystem.component.STextLabel
@@ -93,7 +94,7 @@ fun TodoListPane(
 
         val platformName by states.platformName.collectAsState("")
         STextTitle(
-            text = "Running on $platformName",
+            text = platformName,
             modifier = Modifier.padding(horizontal = LargePadding)
         )
 
@@ -108,7 +109,7 @@ fun TodoListPane(
 
         SLargeSpacing()
         var clue by remember { mutableStateOf(states.searchClue.value) }
-        SearchComponent(
+        SSearchComponent(
             clue,
             onSearch = { q: String ->
                 clue = q
@@ -295,21 +296,6 @@ private fun ButtonFilters(
         }
 
     }
-}
-
-context(SingularityScope)
-@Composable
-private fun SearchComponent(
-    clue: String,
-    onSearch: (String) -> Unit
-) {
-    STextField(
-        modifier = Modifier
-            .padding(horizontal = LargePadding)
-            .fillMaxWidth(),
-        value = clue,
-        onValueChange = onSearch,
-    )
 }
 
 context(SingularityScope)
