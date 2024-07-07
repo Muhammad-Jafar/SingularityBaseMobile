@@ -24,9 +24,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,12 +44,14 @@ import common.isIOS
 import core.ui.SingularityScope
 import core.ui.designsystem.LargePadding
 import core.ui.designsystem.MediumPadding
+import core.ui.designsystem.component.SErrorSnackBar
 import core.ui.designsystem.component.SIconButton
 import core.ui.designsystem.component.SLargeSpacing
 import core.ui.designsystem.component.SMediumSpacing
 import core.ui.designsystem.component.STextBody
 import core.ui.designsystem.component.STextLabel
 import core.ui.designsystem.component.STextTitle
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import system.designsystem.resources.Res
 import system.designsystem.resources.groot
@@ -62,114 +66,146 @@ context(SingularityScope, Context)
 fun AIChatPane(
     pld: AIChatPanePld,
     stateSaver: StateSaver,
-    onBack: () -> Unit
-) {
-    val platform = remember { getPlatform() }
-    val vm = viewModel<AIChatPaneViewModel>(
+    viewModel: AIChatPaneViewModel = viewModel<AIChatPaneViewModel>(
         factory = viewModelFactory {
             initializer {
                 AIChatPaneViewModel(
                     context = this@Context,
-                    defaultSate = stateSaver.pop() ?: AIChatPaneState.SaveAble()
+                    defaultSate = stateSaver.pop() ?: AIChatPaneState()
                 )
             }
         }
-    )
-    val states = vm.reducer
-
-    Column {
-        val listState = rememberLazyListState()
-        Row(
-            modifier = Modifier.padding(
-                start = MediumPadding,
-                top = MediumPadding
-            ),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            SIconButton(
-                onClick = onBack
-            ) {
-                Icon(
-                    Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = null
-                )
-            }
-            Image(
-                modifier = Modifier.size(30.dp),
-                painter = painterResource(Res.drawable.groot),
-                contentDescription = "Groot customer service"
-            )
-            SMediumSpacing()
-            STextTitle("I am Groot!")
-        }
-        SMediumSpacing()
-
-        val chatHistoryItem by states.historyDisplayItems.collectAsState(listOf())
-        LazyColumn(
-            modifier = Modifier.fillMaxWidth()
-                .weight(1f)
-                .background(
-                    MaterialTheme.colorScheme.surfaceContainer
+    ),
+    onBack: () -> Unit
+) {
+    val scope = rememberCoroutineScope()
+    val states by viewModel.container.stateFlow.collectAsState()
+    val platform = remember { getPlatform() }
+    Box {
+        Column {
+            val listState = rememberLazyListState()
+            Row(
+                modifier = Modifier.padding(
+                    start = MediumPadding,
+                    top = MediumPadding
                 ),
-            state = listState
-        ) {
-            item {
-                SMediumSpacing()
-            }
-            items(chatHistoryItem.size) { index ->
-                val item = chatHistoryItem[index]
-                PairChatBlock(historyItem = item)
-                SMediumSpacing()
-            }
-            item {
-                SLargeSpacing()
-            }
-        }
-
-        LaunchedEffect(chatHistoryItem) {
-            if (chatHistoryItem.isEmpty())
-                return@LaunchedEffect
-
-            listState.animateScrollToItem(chatHistoryItem.size - 1 + 1 /**because we have spacer**/)
-        }
-
-        SMediumSpacing()
-
-        var prompt by remember { mutableStateOf("") }
-        TextField(
-            modifier = Modifier
-                .padding(
-                    horizontal = LargePadding
-                )
-                .fillMaxWidth(),
-            value = prompt,
-            placeholder = {
-                STextLabel("Enter Prompt")
-            },
-            onValueChange = { prompt = it },
-            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-            keyboardActions = KeyboardActions(
-                onDone = {
-                    if (prompt.isBlank()) return@KeyboardActions
-                    vm.Post(Intent.Chat(prompt))
-                    prompt = ""
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                SIconButton(
+                    onClick = onBack
+                ) {
+                    Icon(
+                        Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = null
+                    )
                 }
+                Image(
+                    modifier = Modifier.size(30.dp),
+                    painter = painterResource(Res.drawable.groot),
+                    contentDescription = "Groot customer service"
+                )
+                SMediumSpacing()
+                STextTitle("I am Groot!")
+            }
+            SMediumSpacing()
+
+            val chatHistoryItem by remember(states) {
+                derivedStateOf {
+                    states.chatHistories
+                }
+            }
+
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth()
+                    .weight(1f)
+                    .background(
+                        MaterialTheme.colorScheme.surfaceContainer
+                    ),
+                state = listState
+            ) {
+                item {
+                    SMediumSpacing()
+                }
+                items(chatHistoryItem.size) { index ->
+                    val item = chatHistoryItem[index]
+                    PairChatBlock(historyItem = item)
+                    SMediumSpacing()
+                }
+                item {
+                    SLargeSpacing()
+                }
+            }
+
+            LaunchedEffect(chatHistoryItem) {
+                if (chatHistoryItem.isEmpty())
+                    return@LaunchedEffect
+
+                listState.animateScrollToItem(
+                    chatHistoryItem.size - 1 + 1
+                    /**because we have spacer**/
+                )
+            }
+
+            SMediumSpacing()
+
+            var prompt by remember { mutableStateOf("") }
+            TextField(
+                modifier = Modifier
+                    .padding(
+                        horizontal = LargePadding
+                    )
+                    .fillMaxWidth(),
+                value = prompt,
+                placeholder = {
+                    STextLabel("Enter Prompt")
+                },
+                onValueChange = { prompt = it },
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                keyboardActions = KeyboardActions(
+                    onDone = {
+                        if (prompt.isBlank()) return@KeyboardActions
+                        viewModel.chat(message = prompt)
+                        prompt = ""
+                    }
+                )
             )
-        )
 
-        when {
-            platform.isAndroid() -> {
-                SLargeSpacing()
-                SLargeSpacing()
+            when {
+                platform.isAndroid() -> {
+                    SLargeSpacing()
+                    SLargeSpacing()
+                }
+
+                platform.isIOS() -> {
+                    SLargeSpacing()
+                    SLargeSpacing()
+                }
+
+                else -> {
+                    SLargeSpacing()
+                }
+            }
+        }
+
+        var snackBarMessage by remember { mutableStateOf("") }
+        if (snackBarMessage.isNotBlank())
+            SErrorSnackBar(
+                message = snackBarMessage,
+                actionLabel = "ok",
+                modifier = Modifier.align(Alignment.BottomCenter)
+            ) {
+                snackBarMessage = ""
             }
 
-            platform.isIOS() -> {
-                SLargeSpacing()
-                SLargeSpacing()
-            }
-
-            else -> {
-                SLargeSpacing()
+        LaunchedEffect(viewModel.container) {
+            scope.launch {
+                viewModel.container.sideEffectFlow.collect {
+                    when (it) {
+                        is AIChatPaneSideEffect.ShowToast -> {
+                            snackBarMessage = it.message.lines().first()
+                        }
+                    }
+                }
             }
         }
     }

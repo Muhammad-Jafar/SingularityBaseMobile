@@ -5,97 +5,56 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import common.VmFailed
 import common.VmSuccess
-import common.moveToDefault
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.launch
+import org.orbitmvi.orbit.Container
+import org.orbitmvi.orbit.ContainerHost
+import org.orbitmvi.orbit.container
+import org.orbitmvi.orbit.syntax.simple.intent
+import org.orbitmvi.orbit.syntax.simple.postSideEffect
+import org.orbitmvi.orbit.syntax.simple.reduce
 
-sealed class Intent {
-    data class Chat(
-        val message: String
-    ) : Intent()
-}
+data class AIChatPaneState(
+    val chatHistories: List<ChatHistoryItemDisplay> = listOf()
+)
 
-class AIChatPaneState(saveAble: SaveAble) {
-    internal val chatHistories = MutableStateFlow(saveAble.chatHistories)
-
-    data class SaveAble(
-        val chatHistories: List<ChatHistoryItemDisplay> = listOf()
-    )
-
-    fun saveAble() = SaveAble(
-        chatHistories = chatHistories.value
-    )
-}
-
-class AIChatPaneStateReducer(
-    state: AIChatPaneState
-) {
-    val historyDisplayItems = combine(
-        flowOf { Unit },
-        state.chatHistories
-    ) { _, chatHistories ->
-        chatHistories
-    }.moveToDefault()
+sealed class AIChatPaneSideEffect {
+    data class ShowToast(val message: String) : AIChatPaneSideEffect()
 }
 
 class AIChatPaneViewModel(
     private val context: Context,
-    defaultSate: AIChatPaneState.SaveAble,
-) : ViewModel() {
+    defaultSate: AIChatPaneState,
+) : ContainerHost<AIChatPaneState, AIChatPaneSideEffect>, ViewModel() {
 
-    val state = AIChatPaneState(defaultSate)
-    val reducer = AIChatPaneStateReducer(state)
+    override val container: Container<AIChatPaneState, AIChatPaneSideEffect> =
+        viewModelScope.container(defaultSate)
 
-    fun Post(intent: Intent) {
-        when (intent) {
-            is Intent.Chat -> submitChat(ChatHistoryItem(intent.message))
-        }
-    }
-
-    private fun submitChat(
-        chat: ChatHistoryItem
-    ) = viewModelScope.launch {
-        val entity = ChatHistoryItemDisplay(chat)
-
-        // add to history list
-        run {
-            val newHistories = state.chatHistories.first().plus(entity)
-            state.chatHistories.emit(newHistories)
-        }
+    fun chat(message: String) = intent {
 
         // submit to gemini
-        val response = context.geminiAgent.sendMessage(chat.message)
+        val response = context.geminiAgent.sendMessage(message)
             .fold(
                 onSuccess = {
                     VmSuccess(it)
                 },
                 onFailure = {
+                    postSideEffect(AIChatPaneSideEffect.ShowToast(it.cause?.message ?: it.message ?: "Unknown Error"))
                     VmFailed(Exception(it))
                 }
             )
 
         // new entity
-        val newEntity = entity.copy(
-            chatHistoryItem = entity.chatHistoryItem.copy(
-                answer = entity.chatHistoryItem.answer.copy(
-                    answerState = response
-                )
+        val responseEntity = ChatHistoryItemDisplay(
+            ChatHistoryItem(
+                message = message,
+                answer = ChatResponse(response)
             )
         )
 
-        // new list
-        val newList = state.chatHistories.first()
-            .toMutableList()
-            .apply {
-                val index = state.chatHistories.first().indexOf(entity)
-                set(index, newEntity)
-            }
-            .toList()
-
-        // emit new list
-        state.chatHistories.emit(newList)
+        // add new entity to list of the state
+        reduce {
+            state.copy(
+                chatHistories = state.chatHistories.plus(responseEntity)
+            )
+        }
     }
 }
