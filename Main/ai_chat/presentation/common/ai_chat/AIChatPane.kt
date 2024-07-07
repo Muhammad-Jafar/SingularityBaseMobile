@@ -41,6 +41,7 @@ import common.StateSaver
 import common.getPlatform
 import common.isAndroid
 import common.isIOS
+import core.ui.SingularityPane
 import core.ui.SingularityScope
 import core.ui.designsystem.LargePadding
 import core.ui.designsystem.MediumPadding
@@ -81,7 +82,8 @@ fun AIChatPane(
     val scope = rememberCoroutineScope()
     val states by viewModel.container.stateFlow.collectAsState()
     val platform = remember { getPlatform() }
-    Box {
+
+    SingularityPane {
         Column {
             val listState = rememberLazyListState()
             Row(
@@ -142,6 +144,7 @@ fun AIChatPane(
 
                 listState.animateScrollToItem(
                     chatHistoryItem.size - 1 + 1
+                    /**because we have spacer**/
                     /**because we have spacer**/
                 )
             }
