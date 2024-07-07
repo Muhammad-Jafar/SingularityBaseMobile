@@ -44,6 +44,12 @@ class FeaturePane : ComposePlugin() {
                     implementation(Dependencies(project).components.uiToolingPreview)
                     implementation(libs.findLibrary("compose-navigation").get())
                     implementation(libs.findLibrary("lifecycle-viewmodel-compose").get())
+                    implementation(libs.findLibrary("orbit-mvi-core").get())
+                    implementation(libs.findLibrary("orbit-mvi-compose").get())
+                }
+
+                sourceSets.commonTest.dependencies {
+                    implementation(libs.findLibrary("orbit-test").get())
                 }
             }
 

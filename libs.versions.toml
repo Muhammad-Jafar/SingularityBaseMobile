@@ -24,6 +24,7 @@ lifecycleViewmodelCompose = "2.8.0"
 pluto = "2.2.2"
 coroutine = "1.9.0-RC"
 generativeai = "0.8.0"
+orbit-mvi = "9.0.0"
 
 [libraries]
 compose-gradle-plugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "composeGradlePlugin" }
@@ -79,10 +80,15 @@ pluto-plugin-room-no-op = { module = "com.plutolib.plugins:rooms-db-no-op", vers
 pluto-plugin-data-store = { module = "com.plutolib.plugins:datastore-pref", version.ref = "pluto" }
 pluto-plugin-data-store-no-op = { module = "com.plutolib.plugins:datastore-pref-no-op", version.ref = "pluto" }
 generativeai = { group = "com.google.ai.client.generativeai", name = "generativeai", version.ref = "generativeai" }
+orbit-mvi-core = { module = "org.orbit-mvi:orbit-core", version.ref = "orbit-mvi" }
+orbit-mvi-viewmodel = { module = "org.orbit-mvi:orbit-viewmodel", version.ref = "orbit-mvi" }
+orbit-mvi-compose = { module = "org.orbit-mvi:orbit-compose", version.ref = "orbit-mvi" }
+orbit-test = { module = "org.orbit-mvi:orbit-test", version.ref = "orbit-mvi" }
 
 [bundles]
 pluto = ["pluto", "pluto-bundle-core", "pluto-plugin-network", "pluto-plugin-network-ktor-interceptor", "pluto-plugin-logger", "pluto-plugin-shared-preference", "pluto-plugin-exception", "pluto-plugin-room", "pluto-plugin-data-store"]
 pluto-no-op = ["pluto-no-op", "pluto-bundle-core-no-op", "pluto-plugin-network-no-op", "pluto-plugin-network-ktor-interceptor-no-op", "pluto-plugin-logger-no-op", "pluto-plugin-shared-preference-no-op", "pluto-plugin-exception-no-op", "pluto-plugin-room-no-op", "pluto-plugin-data-store-no-op"]
+orbit-mvi = ["orbit-mvi-compose", "orbit-mvi-core"]
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
