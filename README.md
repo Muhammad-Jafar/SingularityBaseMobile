@@ -71,7 +71,7 @@ More module will be added in the future such camera, biometic, etc.
 I would love to know what you need. If you need a module, feel free to request for it. You can find me in discord as `stefanus ayudha#7707` or [Mail me at stefanus.ayudha@gmail.com](mailto:stefanus.ayudha@gmail.com).
 
 ## Contributing
-Read [README_CONTRIBUTING.md](Docs/Contributing)
+Read [README_CONTRIBUTING.md](Docs/Contributing.md)
 
 ## Tips
 ### Make directory look better
