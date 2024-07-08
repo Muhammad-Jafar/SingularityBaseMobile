@@ -96,6 +96,9 @@ $./create.sh -t "shared" -n "example"
 $./create.sh -t "system" -n "example"
 ```
 
+## FAQ
+See: [FAQ.md](Docs/FAQ.md)
+
 ## Meet the author
 [Stefanus Ayudha](https://www.linkedin.com/in/stefanus-ayudha-447a98b5/).
 I would be happy to help you in creating an extraordinary starting.
