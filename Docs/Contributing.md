@@ -28,7 +28,7 @@ Every contributor is required to adhere to this established pattern and architec
 ![Singularity GitFlow - Gitflow.jpg](Singularity%20GitFlow%20-%20Gitflow.jpg)
 See: [Singularity Gitflow - Miro.](https://miro.com/app/board/uXjVMS5Omk8=/?share_link_id=784438148126)
 
-**Note**
+## Note (GitFlow)
 1. **Rebase Rule**
    Rebasing should only be done if the changes are foundational to the project. For example, if there are changes to the API in the core module during a sprint that need to be made. Or, for example, if there are additions to source material such as strings, colors, components, tokens, and so on. Changes at the feature level should not be rebased. Changes at the feature level should be merged without rebasing.
    Rebase notation should be able to be defined as the following expressiong: `BaseV1.2.0 = BaseV1.1.x + resources + component + token + ...` and feature must not be included to the base.
@@ -51,7 +51,7 @@ See: [Singularity Gitflow - Miro.](https://miro.com/app/board/uXjVMS5Omk8=/?shar
 
   To commit documentation.
 
-**Note:**
+## Note (Convention Commit)
 1. **Committing changes with side effect**
    If your changes somehow affecting another module that is not associated with your module / scope, and somehow you cannot separate them to separated commits, you must add `!` at the beginning of your commit message and add `ALSO:` to provides the effects.
 
