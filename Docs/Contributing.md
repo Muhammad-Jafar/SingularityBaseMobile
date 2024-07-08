@@ -25,7 +25,7 @@ The `base` branch serves as the pattern convention for this application. It repr
 Every contributor is required to adhere to this established pattern and architecture.
 
 ## Git flow
-![Singularity GitFlow - Gitflow.jpg](Docs%2FSingularity%20GitFlow%20-%20Gitflow.jpg)
+![Singularity GitFlow - Gitflow.jpg](Singularity%20GitFlow%20-%20Gitflow.jpg)
 See: [Singularity Gitflow - Miro.](https://miro.com/app/board/uXjVMS5Omk8=/?share_link_id=784438148126)
 
 ## Commit convention
@@ -60,14 +60,14 @@ Commit the lowest module first.
 
 1. Set the commit view into module.
 
-   ![Screenshot 2024-03-10 at 19.14.55.png](Docs%2FScreenshot%202024-03-10%20at%2019.14.55.png)
+   ![Screenshot 2024-03-10 at 19.14.55.png](Screenshot%202024-03-10%20at%2019.14.55.png)
 2. Commit modules in order from the lowest to highest.
 
-   ![Screenshot 2024-03-10 at 19.19.43.png](Docs%2FScreenshot%202024-03-10%20at%2019.19.43.png)
+   ![Screenshot 2024-03-10 at 19.19.43.png](Screenshot%202024-03-10%20at%2019.19.43.png)
 
 3. Commit only what is necessary.
 
-   ![Screenshot 2024-03-10 at 19.21.44.png](Docs%2FScreenshot%202024-03-10%20at%2019.21.44.png)
+   ![Screenshot 2024-03-10 at 19.21.44.png](Screenshot%202024-03-10%20at%2019.21.44.png)
 
 ## TIPS
 Create new scope in Appearance & Behavior > Scopes with following pattern:
