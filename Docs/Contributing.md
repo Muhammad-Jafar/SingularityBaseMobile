@@ -31,6 +31,11 @@ See: [Singularity Gitflow - Miro.](https://miro.com/app/board/uXjVMS5Omk8=/?shar
 **Note**
 1. **Rebase Rule**
    Rebasing should only be done if the changes are foundational to the project. For example, if there are changes to the API in the core module during a sprint that need to be made. Or, for example, if there are additions to source material such as strings, colors, components, tokens, and so on. Changes at the feature level should not be rebased. Changes at the feature level should be merged without rebasing.
+   Rebase notation should be able to be defined as the following expressiong: `BaseV1.2.0 = BaseV1.1.x + resources + component + token + ...` and feature must not be included to the base.
+2. **Changes in module structure must add major version**
+   You cannot restructure a module and update the minor version. You must update a major version and better in seperated project.
+3. **Early development**
+   In the early stage of the development, we usually make alot of changes to the module structure and core api. In that case, make sure that you are following the rebase rule.
 
 ## Commit convention
 - `fix($scope): $message.`
