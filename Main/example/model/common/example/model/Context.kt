@@ -1,6 +1,6 @@
 package example.model
 
-import core.util.context.WebRepositoryContext
+import core.context.WebRepositoryContext
 
 data class Context(
     val webRepositoryContext: WebRepositoryContext

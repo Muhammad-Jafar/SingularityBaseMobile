@@ -1,7 +1,7 @@
 package main.modules
 
-import core.util.context.WebClient
-import core.util.context.WebRepositoryContext
+import core.context.WebClient
+import core.context.WebRepositoryContext
 import webclient.defaultWebClient
 
 class ExampleWebRepositoryContext(

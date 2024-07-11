@@ -1,4 +1,4 @@
-package core.util.context
+package core.context
 
 interface WebClient {
 

@@ -6,8 +6,8 @@ package core.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import core.util.systemlayer.SystemLoggerScope
-import core.util.systemlayer.SystemLoggerScopeImpl
+import core.layer.SystemLoggerScope
+import core.layer.SystemLoggerScopeImpl
 
 @Immutable
 data class SingularityScope(
