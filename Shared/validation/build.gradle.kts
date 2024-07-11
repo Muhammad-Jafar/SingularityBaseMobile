@@ -5,7 +5,7 @@
 plugins {
     id("LibraryConventionV1")
     id("CompileIOS")
-    id("CompileWasm")
+    /*id("CompileWasm")*/
 }
 
 kotlin {

@@ -10,7 +10,7 @@ import plugin.convention.companion.model
 plugins {
     id("LibraryConventionV1")
     id("CompileIOS")
-    id("CompileWasm")
+    /*id("CompileWasm")*/
     id("FeatureCoroutine")
     id("FeaturePane")
     id("FeatureSerialization")

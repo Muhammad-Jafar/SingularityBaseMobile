@@ -42,7 +42,7 @@ import plugin.convention.companion.data
 plugins {
     id("LibraryConventionV1")
     id("CompileIOS")
-    id("CompileWasm")
+    /*id("CompileWasm")*/
     id("FeatureCoroutine")
     id("FeaturePane")
     id("FeatureSerialization")
@@ -86,7 +86,7 @@ import plugin.convention.companion.System
 plugins {
     id("LibraryConventionV1")
     id("CompileIOS")
-    id("CompileWasm")
+    /*id("CompileWasm")*/
     id("FeatureCoroutine")
     id("FeatureSerialization")
     id("FeatureHttpClient")
@@ -125,7 +125,7 @@ model_pt1=$(cat <<'EOF'
 plugins {
     id("LibraryConventionV1")
     id("CompileIOS")
-    id("CompileWasm")
+    /*id("CompileWasm")*/
     id("FeatureCoroutine")
     id("FeatureSerialization")
 }
@@ -149,7 +149,7 @@ common_library_pt1=$(cat <<'EOF'
 plugins {
     id("LibraryConventionV1")
     id("CompileIOS")
-    id("CompileWasm")
+    /*id("CompileWasm")*/
     id("FeatureCoroutine")
 }
 

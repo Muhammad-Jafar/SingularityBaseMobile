@@ -40,7 +40,7 @@ This codebase is designed with a layering system. This allows you to add busines
   plugins {
       id("LibraryConventionV1")
       id("CompileIOS")
-      id("CompileWasm")
+      /*id("CompileWasm")*/
       id("FeatureCoroutine")
       id("FeatureSerialization")
       id("FeatureHttpClient")
