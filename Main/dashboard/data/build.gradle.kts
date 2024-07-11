@@ -9,7 +9,6 @@ plugins {
     id("FeatureCoroutine")
     id("FeatureSerialization")
     id("FeatureHttpClient")
-    id("PostmanClient")
 }
 
 kotlin {

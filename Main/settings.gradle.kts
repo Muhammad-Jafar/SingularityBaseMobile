@@ -103,3 +103,14 @@ File(settingsDir, "./dashboard")
         include(":dashboard:${dir.name}")
     }
     ?.toList()
+
+
+File(settingsDir, "./authentication")
+    .listFiles()
+    ?.asSequence()
+    ?.filter { it.isDirectory }
+    ?.filter { it.listFiles()?.map { it.name }?.contains("build.gradle.kts") == true }
+    ?.onEach { dir ->
+        include(":authentication:${dir.name}")
+    }
+    ?.toList()
