@@ -39,10 +39,10 @@ fun TodoDetailPane(
         )
         STextSubTitle(
             """
-            This is detail screen for Todo with id = ${pld.id}.
-            I'm too lazy to do it.
-            But this is enough to demonstrate navigation.
-        """.trimIndent(),
+                This is detail screen for Todo with id = ${pld.id}.
+                I'm too lazy to do it.
+                But this is enough to demonstrate navigation.
+            """.trimIndent(),
             modifier = Modifier.padding(
                 horizontal = LargePadding
             )

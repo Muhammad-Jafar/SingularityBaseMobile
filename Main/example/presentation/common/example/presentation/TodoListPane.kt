@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -20,7 +19,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
@@ -46,7 +44,6 @@ import core.ui.designsystem.component.SMediumSpacing
 import core.ui.designsystem.component.SPrimaryButton
 import core.ui.designsystem.component.SSearchComponent
 import core.ui.designsystem.component.STextBody
-import core.ui.designsystem.component.STextField
 import core.ui.designsystem.component.STextLabel
 import core.ui.designsystem.component.STextTitle
 import example.model.Context

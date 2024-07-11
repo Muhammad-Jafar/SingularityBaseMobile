@@ -17,7 +17,6 @@ import core.ui.SingularityScope
 import core.ui.designsystem.LargePadding
 import core.ui.designsystem.component.SExtraLargeSpacing
 import core.ui.designsystem.component.SLargeSpacing
-import core.ui.designsystem.component.SMediumLogo
 import core.ui.designsystem.component.SMediumSpacing
 import core.ui.designsystem.component.SParagraphSpacing
 import core.ui.designsystem.component.SSmallLogo
