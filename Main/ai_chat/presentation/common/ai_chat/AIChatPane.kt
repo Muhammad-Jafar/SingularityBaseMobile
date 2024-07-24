@@ -43,8 +43,7 @@ import common.isAndroid
 import common.isIOS
 import core.ui.SingularityPane
 import core.ui.SingularityScope
-import core.ui.designsystem.LargePadding
-import core.ui.designsystem.MediumPadding
+import core.ui.designsystem.SingularityTheme
 import core.ui.designsystem.component.SErrorSnackBar
 import core.ui.designsystem.component.SIconButton
 import core.ui.designsystem.component.SLargeSpacing
@@ -52,6 +51,8 @@ import core.ui.designsystem.component.SMediumSpacing
 import core.ui.designsystem.component.STextBody
 import core.ui.designsystem.component.STextLabel
 import core.ui.designsystem.component.STextTitle
+import core.ui.designsystem.`large-padding`
+import core.ui.designsystem.`medium-padding`
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import system.designsystem.resources.Res
@@ -71,7 +72,6 @@ fun AIChatPane(
         factory = viewModelFactory {
             initializer {
                 AIChatPaneViewModel(
-                    context = this@Context,
                     defaultSate = stateSaver.pop() ?: AIChatPaneState()
                 )
             }
@@ -79,6 +79,7 @@ fun AIChatPane(
     ),
     onBack: () -> Unit
 ) {
+    val attr = SingularityTheme.attr
     val scope = rememberCoroutineScope()
     val states by viewModel.container.stateFlow.collectAsState()
     val platform = remember { getPlatform() }
@@ -88,8 +89,8 @@ fun AIChatPane(
             val listState = rememberLazyListState()
             Row(
                 modifier = Modifier.padding(
-                    start = MediumPadding,
-                    top = MediumPadding
+                    start = attr.`medium-padding`,
+                    top = attr.`medium-padding`
                 ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -155,7 +156,7 @@ fun AIChatPane(
             TextField(
                 modifier = Modifier
                     .padding(
-                        horizontal = LargePadding
+                        horizontal = attr.`large-padding`
                     )
                     .fillMaxWidth(),
                 value = prompt,
@@ -229,10 +230,11 @@ fun PairChatBlock(
 fun ChatBlock(
     message: String
 ) {
+    val attr = SingularityTheme.attr
     Box(
         modifier = Modifier
             .padding(
-                horizontal = LargePadding
+                horizontal = attr.`large-padding`
             )
             .fillMaxWidth()
     ) {
@@ -248,8 +250,8 @@ fun ChatBlock(
                 text = message,
                 modifier = Modifier
                     .padding(
-                        horizontal = LargePadding,
-                        vertical = MediumPadding
+                        horizontal = attr.`large-padding`,
+                        vertical = attr.`medium-padding`
                     )
             )
         }
@@ -260,10 +262,11 @@ fun ChatBlock(
 fun ChatAnswerBlock(
     message: String
 ) {
+    val attr = SingularityTheme.attr
     Box(
         modifier = Modifier
             .padding(
-                horizontal = LargePadding
+                horizontal = attr.`large-padding`
             )
             .fillMaxWidth()
     ) {
@@ -279,8 +282,8 @@ fun ChatAnswerBlock(
                 text = message,
                 modifier = Modifier
                     .padding(
-                        horizontal = LargePadding,
-                        vertical = MediumPadding
+                        horizontal = attr.`large-padding`,
+                        vertical = attr.`medium-padding`
                     )
             )
         }

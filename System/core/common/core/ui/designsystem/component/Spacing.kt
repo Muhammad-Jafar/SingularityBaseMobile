@@ -10,40 +10,51 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import core.ui.designsystem.SingularityTheme
+import core.ui.designsystem.`extra-large-spacing`
+import core.ui.designsystem.`large-spacing`
+import core.ui.designsystem.`medium-spacing`
+import core.ui.designsystem.`paragraph-spacing`
+import core.ui.designsystem.`small-spacing`
 
 
 @Composable
 fun SSmallSpacing() {
+    val attr = SingularityTheme.attr
     Spacer(
-        modifier = Modifier.size(core.ui.designsystem.SmallSpacing)
+        modifier = Modifier.size(attr.`small-spacing`)
     )
 }
 
 @Composable
 fun SMediumSpacing() {
+    val attr = SingularityTheme.attr
     Spacer(
-        modifier = Modifier.size(core.ui.designsystem.MediumSpacing)
+        modifier = Modifier.size(attr.`medium-spacing`)
     )
 }
 
 @Composable
 fun SLargeSpacing() {
+    val attr = SingularityTheme.attr
     Spacer(
-        modifier = Modifier.size(core.ui.designsystem.LargeSpacing)
+        modifier = Modifier.size(attr.`large-spacing`)
     )
 }
 
 @Composable
 fun SExtraLargeSpacing() {
+    val attr = SingularityTheme.attr
     Spacer(
-        modifier = Modifier.size(core.ui.designsystem.ExtraLargeSpacing)
+        modifier = Modifier.size(attr.`extra-large-spacing`)
     )
 }
 
 @Composable
 fun SParagraphSpacing() {
+    val attr = SingularityTheme.attr
     Spacer(
-        modifier = Modifier.size(core.ui.designsystem.ParagraphSpacing)
+        modifier = Modifier.size(attr.`paragraph-spacing`)
     )
 }
 

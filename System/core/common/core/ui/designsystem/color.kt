@@ -6,7 +6,7 @@ package core.ui.designsystem
 
 import androidx.compose.ui.graphics.Color
 
-val HawkingRadiation = mapOf(
+internal val HawkingRadiation = mapOf(
     0 to Color(0xff000000),
     10 to Color(0xff431D00),
     20 to Color(0xff6E2F00),
@@ -22,7 +22,7 @@ val HawkingRadiation = mapOf(
     100 to Color(0xffFFFFFF),
 )
 
-val HawkingDimRadiation = mapOf(
+internal val HawkingDimRadiation = mapOf(
     0 to Color(0xff000000),
     10 to Color(0xff302C29),
     20 to Color(0xff423D39),
@@ -38,7 +38,7 @@ val HawkingDimRadiation = mapOf(
     100 to Color(0xffFFFFFF),
 )
 
-val HighEnergyPhoton = mapOf(
+internal val HighEnergyPhoton = mapOf(
     0 to Color(0xff040D25),
     10 to Color(0xff0D1A3F),
     20 to Color(0xff14244F),
@@ -54,7 +54,7 @@ val HighEnergyPhoton = mapOf(
     100 to Color(0xffFFFFFF),
 )
 
-val SpaceDark = mapOf(
+internal val SpaceDark = mapOf(
     0 to Color(0xff040D25),
     4 to Color(0xff181826),
     6 to Color(0xff242436),
@@ -81,7 +81,7 @@ val SpaceDark = mapOf(
     100 to Color(0xffFFFFFF),
 )
 
-val SpaceDarkVariant = mapOf(
+internal val SpaceDarkVariant = mapOf(
     0 to Color(0xff040D25),
     10 to Color(0xff2C2C40),
     20 to Color(0xff46465E),

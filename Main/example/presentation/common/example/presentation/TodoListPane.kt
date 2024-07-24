@@ -35,8 +35,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import common.PrettyJson
 import common.StateSaver
 import core.ui.SingularityScope
-import core.ui.designsystem.LargePadding
-import core.ui.designsystem.MediumPadding
+import core.ui.designsystem.SingularityTheme
 import core.ui.designsystem.component.SLargeCard
 import core.ui.designsystem.component.SLargeSpacing
 import core.ui.designsystem.component.SLazyColumn
@@ -46,6 +45,8 @@ import core.ui.designsystem.component.SSearchComponent
 import core.ui.designsystem.component.STextBody
 import core.ui.designsystem.component.STextLabel
 import core.ui.designsystem.component.STextTitle
+import core.ui.designsystem.`large-padding`
+import core.ui.designsystem.`medium-padding`
 import example.model.Context
 import example.model.TodoID
 import example.presentation.entity.TodoDisplay
@@ -64,6 +65,8 @@ fun TodoListPane(
     stateSaver: StateSaver,
     goToTodoDetail: (TodoID) -> Unit
 ) {
+
+    val attr = SingularityTheme.attr
 
     val vm = viewModel<TodoListPaneViewModel>(
         factory = viewModelFactory {
@@ -92,7 +95,7 @@ fun TodoListPane(
         val platformName by states.platformName.collectAsState("")
         STextTitle(
             text = platformName,
-            modifier = Modifier.padding(horizontal = LargePadding)
+            modifier = Modifier.padding(horizontal = attr.`large-padding`)
         )
 
         val status by states.statusDisplay.collectAsState("")
@@ -166,9 +169,10 @@ fun TodoListPane(
 private fun Status(
     status: String
 ) {
+    val attr = SingularityTheme.attr
     STextLabel(
         text = status,
-        modifier = Modifier.padding(horizontal = LargePadding)
+        modifier = Modifier.padding(horizontal = attr.`large-padding`)
     )
 }
 
@@ -176,9 +180,10 @@ private fun Status(
 private fun Error(
     error: String
 ) {
+    val attr = SingularityTheme.attr
     STextLabel(
         text = error,
-        modifier = Modifier.padding(horizontal = LargePadding)
+        modifier = Modifier.padding(horizontal = attr.`large-padding`)
     )
 }
 
@@ -186,9 +191,10 @@ private fun Error(
 private fun AppliedFilters(
     appliedFilters: String
 ) {
+    val attr = SingularityTheme.attr
     STextLabel(
         text = appliedFilters,
-        modifier = Modifier.padding(horizontal = LargePadding)
+        modifier = Modifier.padding(horizontal = attr.`large-padding`)
     )
 }
 
@@ -232,10 +238,11 @@ fun Reload(
     error: String,
     onReload: () -> Unit
 ) {
+    val attr = SingularityTheme.attr
 
     Box(
         modifier = Modifier
-            .padding(horizontal = LargePadding)
+            .padding(horizontal = attr.`large-padding`)
             .fillMaxWidth()
     ) {
         Card(
@@ -244,7 +251,7 @@ fun Reload(
         ) {
             Column(
                 modifier = Modifier
-                    .padding(LargePadding)
+                    .padding(attr.`large-padding`)
             ) {
                 STextLabel(
                     modifier = Modifier
@@ -253,7 +260,7 @@ fun Reload(
                 )
                 Button(
                     modifier = Modifier
-                        .padding(top = LargePadding)
+                        .padding(top = attr.`large-padding`)
                         .align(Alignment.End),
                     onClick = onReload
                 ) {
@@ -301,9 +308,10 @@ private fun TodoItem(
     item: TodoDisplay,
     onClick: (TodoDisplay) -> Unit,
 ) {
+    val attr = SingularityTheme.attr
     Column(
         modifier = Modifier
-            .padding(horizontal = LargePadding)
+            .padding(horizontal = attr.`large-padding`)
     ) {
         TodoCard(
             todo = item,
@@ -319,6 +327,7 @@ private fun TodoCard(
     todo: TodoDisplay,
     onClick: (TodoDisplay) -> Unit
 ) {
+    val attr = SingularityTheme.attr
     SLargeCard(
         onClick = { onClick.invoke(todo) },
         colors = if (todo.selected)
@@ -333,7 +342,7 @@ private fun TodoCard(
     ) {
         Column(
             modifier = Modifier
-                .padding(LargePadding)
+                .padding(attr.`large-padding`)
         ) {
             Column {
                 STextBody(
@@ -353,8 +362,8 @@ private fun TodoCard(
                             modifier = Modifier
                                 .align(Alignment.CenterHorizontally)
                                 .padding(
-                                    horizontal = LargePadding,
-                                    vertical = MediumPadding
+                                    horizontal = attr.`large-padding`,
+                                    vertical = attr.`medium-padding`
                                 )
                         )
                     }

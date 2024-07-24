@@ -8,9 +8,6 @@ import common.VmSuccess
 import org.orbitmvi.orbit.Container
 import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.container
-import org.orbitmvi.orbit.syntax.simple.intent
-import org.orbitmvi.orbit.syntax.simple.postSideEffect
-import org.orbitmvi.orbit.syntax.simple.reduce
 
 data class AIChatPaneState(
     val chatHistories: List<ChatHistoryItemDisplay> = listOf()
@@ -20,8 +17,8 @@ sealed class AIChatPaneSideEffect {
     data class ShowToast(val message: String) : AIChatPaneSideEffect()
 }
 
+context(Context)
 class AIChatPaneViewModel(
-    private val context: Context,
     defaultSate: AIChatPaneState,
 ) : ContainerHost<AIChatPaneState, AIChatPaneSideEffect>, ViewModel() {
 
@@ -31,7 +28,7 @@ class AIChatPaneViewModel(
     fun chat(message: String) = intent {
 
         // submit to gemini
-        val response = context.geminiAgent.sendMessage(message)
+        val response = this@Context.geminiAgent.sendMessage(message)
             .fold(
                 onSuccess = {
                     VmSuccess(it)

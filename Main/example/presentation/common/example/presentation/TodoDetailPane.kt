@@ -11,13 +11,14 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Modifier
 import common.StateSaver
 import core.ui.SingularityScope
-import core.ui.designsystem.LargePadding
+import core.ui.designsystem.SingularityTheme
 import core.ui.designsystem.component.STextBody
 import core.ui.designsystem.component.STextHeadline1
 import core.ui.designsystem.component.STextHeadline2
 import core.ui.designsystem.component.STextHeadline3
 import core.ui.designsystem.component.STextSubTitle
 import core.ui.designsystem.component.STopAppBar
+import core.ui.designsystem.`large-padding`
 import example.model.Context
 
 @Immutable
@@ -32,6 +33,7 @@ fun TodoDetailPane(
     pld: TodoDetailPanePld,
     stateSaver: StateSaver
 ) {
+    val attr = SingularityTheme.attr
     Column {
         STopAppBar(
             title = "Todo List Title",
@@ -44,44 +46,44 @@ fun TodoDetailPane(
                 But this is enough to demonstrate navigation.
             """.trimIndent(),
             modifier = Modifier.padding(
-                horizontal = LargePadding
+                horizontal = attr.`large-padding`
             )
         )
         STextHeadline1(
             "Headline 1",
             modifier = Modifier.padding(
-                horizontal = LargePadding
+                horizontal = attr.`large-padding`
             )
         )
         STextBody(
             "This is normal text. aksdnkj aslkd lakndl asl salkdnlak dnslkas dlak dlad landlk asd. askjdnoa dla dlaksd alsd las da.",
             modifier = Modifier.padding(
-                horizontal = LargePadding
+                horizontal = attr.`large-padding`
             )
         )
         STextHeadline2(
             "Headline 2",
             modifier = Modifier.padding(
-                horizontal = LargePadding
+                horizontal = attr.`large-padding`
             )
         )
 
         STextBody(
             "This is normal text. aksdnkj aslkd lakndl asl salkdnlak dnslkas dlak dlad landlk asd. askjdnoa dla dlaksd alsd las da.",
             modifier = Modifier.padding(
-                horizontal = LargePadding
+                horizontal = attr.`large-padding`
             )
         )
         STextHeadline3(
             "Headline 3",
             modifier = Modifier.padding(
-                horizontal = LargePadding
+                horizontal = attr.`large-padding`
             )
         )
         STextBody(
             "This is normal text. aksdnkj aslkd lakndl asl salkdnlak dnslkas dlak dlad landlk asd. askjdnoa dla dlaksd alsd las da.",
             modifier = Modifier.padding(
-                horizontal = LargePadding
+                horizontal = attr.`large-padding`
             )
         )
     }

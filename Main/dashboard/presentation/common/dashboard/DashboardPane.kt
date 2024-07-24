@@ -18,13 +18,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import common.StateSaver
 import core.ui.SingularityScope
-import core.ui.designsystem.ExtraLargePadding
-import core.ui.designsystem.LargePadding
+import core.ui.designsystem.SingularityTheme
 import core.ui.designsystem.component.SFloatingActionButton
 import core.ui.designsystem.component.SMediumIcon
 import core.ui.designsystem.component.STab
 import core.ui.designsystem.component.STabRow
 import core.ui.designsystem.component.STextLabel
+import core.ui.designsystem.`extra-large-padding`
+import core.ui.designsystem.`large-padding`
 import example.model.TodoID
 import org.jetbrains.compose.resources.painterResource
 import system.designsystem.resources.Res
@@ -37,6 +38,7 @@ fun DashboardPane(
     gotoTodoDetail: (TodoID) -> Unit = {},
 ) {
 
+    val attr = SingularityTheme.attr
     val tabs = listOf("Singularity", "Todo List")
     val tabNavController = rememberNavController()
 
@@ -94,8 +96,8 @@ fun DashboardPane(
         SFloatingActionButton(
             modifier = Modifier.align(Alignment.BottomEnd)
                 .padding(
-                    vertical = ExtraLargePadding + LargePadding,
-                    horizontal = LargePadding
+                    vertical = attr.`extra-large-padding` + attr.`large-padding`,
+                    horizontal = attr.`large-padding`
                 ),
             onClick = {
                 gotoGroot.invoke()

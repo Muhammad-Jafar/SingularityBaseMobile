@@ -20,7 +20,8 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
 import core.ui.SingularityScope
-import core.ui.designsystem.LargePadding
+import core.ui.designsystem.SingularityTheme
+import core.ui.designsystem.`large-padding`
 
 context(SingularityScope)
 @Composable
@@ -85,9 +86,10 @@ fun SSearchComponent(
     clue: String,
     onSearch: (String) -> Unit
 ) {
+    val attr = SingularityTheme.attr
     STextField(
         modifier = Modifier
-            .padding(horizontal = LargePadding)
+            .padding(horizontal = attr.`large-padding`)
             .fillMaxWidth(),
         value = clue,
         onValueChange = onSearch,

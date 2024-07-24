@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 import core.ui.SingularityScope
-import core.ui.designsystem.LargePadding
+import core.ui.designsystem.SingularityTheme
 import core.ui.designsystem.component.SExtraLargeSpacing
 import core.ui.designsystem.component.SLargeSpacing
 import core.ui.designsystem.component.SMediumSpacing
@@ -25,6 +25,7 @@ import core.ui.designsystem.component.STextHeadline1
 import core.ui.designsystem.component.STextHeadline2
 import core.ui.designsystem.component.STextLabel
 import core.ui.designsystem.component.STextTitle
+import core.ui.designsystem.`large-padding`
 import org.jetbrains.compose.resources.painterResource
 import system.designsystem.resources.Res
 import system.designsystem.resources.ahmad_shufyan
@@ -35,10 +36,12 @@ context(SingularityScope)
 @Composable
 fun PrologPane() {
 
+    val attr = SingularityTheme.attr
+
     LazyColumn(
         modifier = Modifier.fillMaxSize()
             .padding(
-                horizontal = LargePadding
+                horizontal = attr.`large-padding`
             ),
     ) {
 

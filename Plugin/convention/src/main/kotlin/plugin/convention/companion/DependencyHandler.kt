@@ -3,6 +3,11 @@ package plugin.convention.companion
 import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.jetbrains.kotlin.gradle.plugin.KotlinDependencyHandler
 
+val ksp: DependencyHandler.(Any) -> Unit =
+    { dependencyNotation ->
+        add("ksp", dependencyNotation)
+    }
+
 val debugImplementation: DependencyHandler.(Any) -> Unit =
     { dependencyNotation ->
         add("debugImplementation", dependencyNotation)

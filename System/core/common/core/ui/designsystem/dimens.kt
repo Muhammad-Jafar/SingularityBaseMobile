@@ -1,20 +1,8 @@
-/*
- * Copyright (c) 2024 Singularity Indonesia (stefanus.ayudha@gmail.com)
- * You are not allowed to remove the copyright. Unless you have a "free software" licence.
- */
 package core.ui.designsystem
 
 import androidx.compose.ui.unit.dp
 
-val SmallSpacing = 4.dp
-val MediumSpacing = 8.dp
-val LargeSpacing = 16.dp
-val ExtraLargeSpacing = 24.dp
-
-val ParagraphSpacing = 16.dp
-
-
-val SmallPadding = 4.dp
-val MediumPadding = 8.dp
-val LargePadding = 16.dp
-val ExtraLargePadding = 24.dp
+internal val SIZE_4 = 4.dp
+internal val SIZE_8 = 8.dp
+internal val SIZE_16 = 16.dp
+internal val SIZE_24 = 24.dp
