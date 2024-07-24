@@ -62,13 +62,8 @@ context(SingularityScope, Context)
 @Composable
 fun TodoListPane(
     pld: TodoListPanePld,
-    stateSaver: StateSaver,
-    goToTodoDetail: (TodoID) -> Unit
-) {
-
-    val attr = SingularityTheme.attr
-
-    val vm = viewModel<TodoListPaneViewModel>(
+    stateSaver: StateSaver = StateSaver(),
+    viewModel: TodoListPaneViewModel = viewModel<TodoListPaneViewModel>(
         factory = viewModelFactory {
             initializer {
                 TodoListPaneViewModel(
@@ -77,14 +72,18 @@ fun TodoListPane(
                 )
             }
         }
-    )
-    val states = vm.reducer
+    ),
+    goToTodoDetail: (TodoID) -> Unit
+) {
+
+    val attr = SingularityTheme.attr
+    val states = viewModel.reducer
 
     // preload
     LaunchedEffect(
         states.dataIsNotLoaded
     ) {
-        vm.Post(Intent.Reload)
+        viewModel.Post(Intent.Reload)
     }
 
     Column(
@@ -113,7 +112,7 @@ fun TodoListPane(
             clue,
             onSearch = { q: String ->
                 clue = q
-                vm.Post(Intent.Search(q))
+                viewModel.Post(Intent.Search(q))
             }
         )
 
@@ -122,11 +121,11 @@ fun TodoListPane(
             onFilter = { filter: TodoFilter ->
                 val isAlreadySelected = states.todoFilters.value.contains(filter)
                 if (isAlreadySelected)
-                    vm.Post(Intent.RemoveFilter(filter))
+                    viewModel.Post(Intent.RemoveFilter(filter))
                 else
-                    vm.Post(Intent.AddFilter(filter))
+                    viewModel.Post(Intent.AddFilter(filter))
             },
-            onClearFilter = { vm.Post(Intent.ClearFilter) }
+            onClearFilter = { viewModel.Post(Intent.ClearFilter) }
         )
 
         SMediumSpacing()
@@ -150,15 +149,15 @@ fun TodoListPane(
             todoListDisplay = todoListDisplay,
             scrollState = scrollState,
             error = errorDisplay2,
-            onReload = { vm.Post(Intent.Reload) },
+            onReload = { viewModel.Post(Intent.Reload) },
             onItemClicked = { todoDisplay: TodoDisplay ->
                 val isAlreadySelected = states.selectedTodoIDs.value.contains(todoDisplay.todoID)
                 if (isAlreadySelected) {
                     // save current state
-                    stateSaver.pushOrAmend(vm.state.saveAble())
+                    stateSaver.pushOrAmend(viewModel.state.saveAble())
                     goToTodoDetail.invoke(todoDisplay.todoID)
                 } else {
-                    vm.Post(Intent.SelectTodo(todoDisplay.todoID))
+                    viewModel.Post(Intent.SelectTodo(todoDisplay.todoID))
                 }
             },
         )
