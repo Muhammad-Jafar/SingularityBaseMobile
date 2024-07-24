@@ -41,10 +41,9 @@ fun DashboardPane(
     val attr = SingularityTheme.attr
     val tabs = listOf("Singularity", "Todo List")
     val tabNavController = rememberNavController()
+    var selectedTabIndex by remember { mutableStateOf(0) }
+    val stateSaver = remember { StateSaver() }
 
-    var selectedTabIndex by remember {
-        mutableStateOf(0)
-    }
     LaunchedEffect(Unit) {
         tabNavController.addOnDestinationChangedListener { _, destination, _ ->
             selectedTabIndex =
@@ -53,15 +52,11 @@ fun DashboardPane(
                 else 0
         }
     }
-    val stateSaver = remember {
-        StateSaver()
-    }
 
     Box(
         modifier = Modifier
             .imePadding()
     ) {
-
         Column {
             STabRow(
                 selectedTabIndex = selectedTabIndex,
