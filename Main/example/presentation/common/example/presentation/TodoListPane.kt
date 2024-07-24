@@ -78,12 +78,24 @@ fun TodoListPane(
 
     val attr = SingularityTheme.attr
     val states = viewModel.reducer
+    val todoListDisplay by states.todoListDisplay.collectAsState(listOf())
+    val errorDisplay2 by states.listErrorDisplay.collectAsState("")
+    val scrollState = rememberLazyListState()
 
     // preload
     LaunchedEffect(
         states.dataIsNotLoaded
     ) {
         viewModel.Post(Intent.Reload)
+    }
+
+    LaunchedEffect(todoListDisplay) {
+        val selectedIndex = todoListDisplay
+            .indexOfFirst { it.selected }
+            .let { if (it < 0) null else it }
+
+        if (selectedIndex != null)
+            scrollState.animateScrollToItem(selectedIndex)
     }
 
     Column(
@@ -127,21 +139,7 @@ fun TodoListPane(
             },
             onClearFilter = { viewModel.Post(Intent.ClearFilter) }
         )
-
         SMediumSpacing()
-
-        val todoListDisplay by states.todoListDisplay.collectAsState(listOf())
-        val errorDisplay2 by states.listErrorDisplay.collectAsState("")
-        val scrollState = rememberLazyListState()
-
-        LaunchedEffect(todoListDisplay) {
-            val selectedIndex = todoListDisplay
-                .indexOfFirst { it.selected }
-                .let { if (it < 0) null else it }
-
-            if (selectedIndex != null)
-                scrollState.animateScrollToItem(selectedIndex)
-        }
         TodoList(
             modifier = Modifier
                 .fillMaxWidth()
