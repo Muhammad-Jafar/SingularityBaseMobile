@@ -4,8 +4,8 @@
  */
 package main
 
-import ai_chat.AIChatPane
-import ai_chat.AIChatPanePld
+import ai_chat.pane.aichat.AIChatPane
+import ai_chat.pane.aichat.AIChatPanePld
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavType
@@ -15,7 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import common.StateSaver
 import core.ui.SingularityScope
-import dashboard.DashboardPane
+import dashboard.pane.dashboard.DashboardPane
 import todolist.pane.tododetail.TodoDetailPane
 import todolist.pane.tododetail.TodoDetailPanePld
 

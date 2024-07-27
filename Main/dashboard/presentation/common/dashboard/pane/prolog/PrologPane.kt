@@ -1,4 +1,4 @@
-package dashboard
+package dashboard.pane.prolog
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -35,22 +35,22 @@ import system.designsystem.resources.logo_of_singularity_indonesia_circle
 context(SingularityScope)
 @Composable
 fun PrologPane() {
-
     val attr = SingularityTheme.attr
 
     LazyColumn(
-        modifier = Modifier.fillMaxSize()
-            .padding(
-                horizontal = attr.`large-padding`
-            ),
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(
+                    horizontal = attr.`large-padding`,
+                ),
     ) {
-
         item {
             SExtraLargeSpacing()
             Image(
                 modifier = Modifier.size(90.dp),
                 painter = painterResource(Res.drawable.logo_of_singularity_indonesia),
-                contentDescription = "Singularity Indonesia"
+                contentDescription = "Singularity Indonesia",
             )
             STextTitle("Singularity Indonesia Present")
             STextBody(
@@ -58,7 +58,7 @@ fun PrologPane() {
             )
             SParagraphSpacing()
             STextBody(
-                text = "Follow the link bellow to download the source code of this app."
+                text = "Follow the link bellow to download the source code of this app.",
             )
             STextBody(
                 "https://github.com/SingularityIndonesia/SingularityBaseMobile/",
@@ -66,25 +66,25 @@ fun PrologPane() {
             )
             SParagraphSpacing()
             STextHeadline1(
-                text = "Team and Contributors"
+                text = "Team and Contributors",
             )
             STextHeadline2(
-                text = "Project Manager"
+                text = "Project Manager",
             )
             AvatarCard(
                 painter = painterResource(Res.drawable.logo_of_singularity_indonesia_circle),
                 name = "Stefanus Ayudha",
                 linkedInID = "stefanus-ayudha-447a98b5",
-                email = "stefanus.ayudha@gmail.com"
+                email = "stefanus.ayudha@gmail.com",
             )
             STextHeadline2(
-                text = "System designer"
+                text = "System designer",
             )
             AvatarCard(
                 painter = painterResource(Res.drawable.ahmad_shufyan),
                 name = "Ahmad Shufyan",
                 linkedInID = "ahmad-shufyan-319639200",
-                email = "shufyan32@gmail.com"
+                email = "shufyan32@gmail.com",
             )
 
             SExtraLargeSpacing()
@@ -104,16 +104,16 @@ fun AvatarCard(
     email: String,
 ) {
     Row(
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         SSmallLogo(
             painter = painter,
-            contentDescription = name
+            contentDescription = name,
         )
         SLargeSpacing()
         Column {
             STextBody(
-                text = name
+                text = name,
             )
             SMediumSpacing()
             Row {
@@ -121,7 +121,7 @@ fun AvatarCard(
                 SMediumSpacing()
                 STextLabel(
                     text = linkedInID,
-                    color = MaterialTheme.colorScheme.tertiary
+                    color = MaterialTheme.colorScheme.tertiary,
                 )
             }
             Row {
@@ -129,10 +129,9 @@ fun AvatarCard(
                 SMediumSpacing()
                 STextLabel(
                     text = email,
-                    color = MaterialTheme.colorScheme.tertiary
+                    color = MaterialTheme.colorScheme.tertiary,
                 )
             }
         }
     }
-
 }

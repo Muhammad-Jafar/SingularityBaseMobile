@@ -1,4 +1,4 @@
-package dashboard
+package dashboard.pane.dashboard
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,6 +26,7 @@ import core.ui.designsystem.component.STabRow
 import core.ui.designsystem.component.STextLabel
 import core.ui.designsystem.`extra-large-padding`
 import core.ui.designsystem.`large-padding`
+import dashboard.Context
 import org.jetbrains.compose.resources.painterResource
 import system.designsystem.resources.Res
 import system.designsystem.resources.groot

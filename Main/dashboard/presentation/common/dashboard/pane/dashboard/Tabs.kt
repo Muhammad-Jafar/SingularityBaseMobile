@@ -1,4 +1,4 @@
-package dashboard
+package dashboard.pane.dashboard
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -7,6 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import common.StateSaver
 import core.ui.SingularityScope
+import dashboard.Context
+import dashboard.pane.prolog.PrologPane
 import todolist.TodoID
 import todolist.pane.todolist.TodoListPane
 import todolist.pane.todolist.TodoListPanePld

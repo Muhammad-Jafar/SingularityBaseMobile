@@ -1,5 +1,6 @@
-package ai_chat
+package ai_chat.pane.aichat
 
+import ai_chat.Context
 import ai_chat.entity.ChatHistoryItemDisplay
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -60,7 +61,7 @@ import system.designsystem.resources.groot
 
 @Immutable
 data class AIChatPanePld(
-    val unit: Unit = Unit
+    val unit: Unit = Unit,
 )
 
 context(SingularityScope, Context)
@@ -68,16 +69,18 @@ context(SingularityScope, Context)
 fun AIChatPane(
     pld: AIChatPanePld,
     stateSaver: StateSaver,
-    viewModel: AIChatPaneViewModel = viewModel<AIChatPaneViewModel>(
-        factory = viewModelFactory {
-            initializer {
-                AIChatPaneViewModel(
-                    defaultSate = stateSaver.pop() ?: AIChatPaneState()
-                )
-            }
-        }
-    ),
-    onBack: () -> Unit
+    viewModel: AIChatPaneViewModel =
+        viewModel<AIChatPaneViewModel>(
+            factory =
+                viewModelFactory {
+                    initializer {
+                        AIChatPaneViewModel(
+                            defaultSate = stateSaver.pop() ?: AIChatPaneState(),
+                        )
+                    }
+                },
+        ),
+    onBack: () -> Unit,
 ) {
     val attr = SingularityTheme.attr
     val scope = rememberCoroutineScope()
@@ -88,24 +91,25 @@ fun AIChatPane(
         Column {
             val listState = rememberLazyListState()
             Row(
-                modifier = Modifier.padding(
-                    start = attr.`medium-padding`,
-                    top = attr.`medium-padding`
-                ),
-                verticalAlignment = Alignment.CenterVertically
+                modifier =
+                    Modifier.padding(
+                        start = attr.`medium-padding`,
+                        top = attr.`medium-padding`,
+                    ),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 SIconButton(
-                    onClick = onBack
+                    onClick = onBack,
                 ) {
                     Icon(
                         Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = null
+                        contentDescription = null,
                     )
                 }
                 Image(
                     modifier = Modifier.size(30.dp),
                     painter = painterResource(Res.drawable.groot),
-                    contentDescription = "Groot customer service"
+                    contentDescription = "Groot customer service",
                 )
                 SMediumSpacing()
                 STextTitle("I am Groot!")
@@ -119,12 +123,14 @@ fun AIChatPane(
             }
 
             LazyColumn(
-                modifier = Modifier.fillMaxWidth()
-                    .weight(1f)
-                    .background(
-                        MaterialTheme.colorScheme.surfaceContainer
-                    ),
-                state = listState
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .weight(1f)
+                        .background(
+                            MaterialTheme.colorScheme.surfaceContainer,
+                        ),
+                state = listState,
             ) {
                 item {
                     SMediumSpacing()
@@ -140,11 +146,12 @@ fun AIChatPane(
             }
 
             LaunchedEffect(chatHistoryItem) {
-                if (chatHistoryItem.isEmpty())
+                if (chatHistoryItem.isEmpty()) {
                     return@LaunchedEffect
+                }
 
                 listState.animateScrollToItem(
-                    chatHistoryItem.size - 1 + 1
+                    chatHistoryItem.size - 1 + 1,
                     /**because we have spacer**/
                     /**because we have spacer**/
                 )
@@ -154,24 +161,25 @@ fun AIChatPane(
 
             var prompt by remember { mutableStateOf("") }
             TextField(
-                modifier = Modifier
-                    .padding(
-                        horizontal = attr.`large-padding`
-                    )
-                    .fillMaxWidth(),
+                modifier =
+                    Modifier
+                        .padding(
+                            horizontal = attr.`large-padding`,
+                        ).fillMaxWidth(),
                 value = prompt,
                 placeholder = {
                     STextLabel("Enter Prompt")
                 },
                 onValueChange = { prompt = it },
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-                keyboardActions = KeyboardActions(
-                    onDone = {
-                        if (prompt.isBlank()) return@KeyboardActions
-                        viewModel.chat(message = prompt)
-                        prompt = ""
-                    }
-                )
+                keyboardActions =
+                    KeyboardActions(
+                        onDone = {
+                            if (prompt.isBlank()) return@KeyboardActions
+                            viewModel.chat(message = prompt)
+                            prompt = ""
+                        },
+                    ),
             )
 
             when {
@@ -192,14 +200,15 @@ fun AIChatPane(
         }
 
         var snackBarMessage by remember { mutableStateOf("") }
-        if (snackBarMessage.isNotBlank())
+        if (snackBarMessage.isNotBlank()) {
             SErrorSnackBar(
                 message = snackBarMessage,
                 actionLabel = "ok",
-                modifier = Modifier.align(Alignment.BottomCenter)
+                modifier = Modifier.align(Alignment.BottomCenter),
             ) {
                 snackBarMessage = ""
             }
+        }
 
         LaunchedEffect(viewModel.container) {
             scope.launch {
@@ -216,9 +225,7 @@ fun AIChatPane(
 }
 
 @Composable
-fun PairChatBlock(
-    historyItem: ChatHistoryItemDisplay
-) {
+fun PairChatBlock(historyItem: ChatHistoryItemDisplay) {
     Column {
         ChatBlock(message = historyItem.message)
         SMediumSpacing()
@@ -227,64 +234,66 @@ fun PairChatBlock(
 }
 
 @Composable
-fun ChatBlock(
-    message: String
-) {
+fun ChatBlock(message: String) {
     val attr = SingularityTheme.attr
     Box(
-        modifier = Modifier
-            .padding(
-                horizontal = attr.`large-padding`
-            )
-            .fillMaxWidth()
+        modifier =
+            Modifier
+                .padding(
+                    horizontal = attr.`large-padding`,
+                ).fillMaxWidth(),
     ) {
         Card(
-            modifier = Modifier
-                .align(Alignment.CenterEnd),
-            colors = CardDefaults.cardColors().copy(
-                contentColor = MaterialTheme.colorScheme.onSurface,
-                containerColor = MaterialTheme.colorScheme.surfaceContainerLow
-            )
+            modifier =
+                Modifier
+                    .align(Alignment.CenterEnd),
+            colors =
+                CardDefaults.cardColors().copy(
+                    contentColor = MaterialTheme.colorScheme.onSurface,
+                    containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
+                ),
         ) {
             STextBody(
                 text = message,
-                modifier = Modifier
-                    .padding(
-                        horizontal = attr.`large-padding`,
-                        vertical = attr.`medium-padding`
-                    )
+                modifier =
+                    Modifier
+                        .padding(
+                            horizontal = attr.`large-padding`,
+                            vertical = attr.`medium-padding`,
+                        ),
             )
         }
     }
 }
 
 @Composable
-fun ChatAnswerBlock(
-    message: String
-) {
+fun ChatAnswerBlock(message: String) {
     val attr = SingularityTheme.attr
     Box(
-        modifier = Modifier
-            .padding(
-                horizontal = attr.`large-padding`
-            )
-            .fillMaxWidth()
+        modifier =
+            Modifier
+                .padding(
+                    horizontal = attr.`large-padding`,
+                ).fillMaxWidth(),
     ) {
         Card(
-            modifier = Modifier
-                .align(Alignment.CenterStart),
-            colors = CardDefaults.cardColors().copy(
-                contentColor = MaterialTheme.colorScheme.onSurface,
-                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
-            )
+            modifier =
+                Modifier
+                    .align(Alignment.CenterStart),
+            colors =
+                CardDefaults.cardColors().copy(
+                    contentColor = MaterialTheme.colorScheme.onSurface,
+                    containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                ),
         ) {
             STextBody(
                 text = message,
-                modifier = Modifier
-                    .padding(
-                        horizontal = attr.`large-padding`,
-                        vertical = attr.`medium-padding`
-                    )
+                modifier =
+                    Modifier
+                        .padding(
+                            horizontal = attr.`large-padding`,
+                            vertical = attr.`medium-padding`,
+                        ),
             )
         }
     }
