@@ -14,6 +14,8 @@ The CC license is created to protect the creator and the team, under the name of
 You are not allowed to remove the copyright notice wherever it is. However, you can do so with a "free software" license. You can get the license by sending a request via email to: stefanus.ayudha@gmail. com.  The free software license is free of charge. We do this to keep track of who is using our software to help further in the future, as well as to help us to improve our software. After you have a "free software" license, you can do whatever you want and are no longer bound to us.
 
 ## What is so cool
+### Function First!
+This codebase is designed to be function-oriented, pushing the boundaries of Kotlin functional programming.
 ### I am Groot!
 This codebase comes with Groot AI assistant module as example of Gemini AI integration. This codebase featured with gemini module to make it ready to launch AI powered Application.
 <p>
