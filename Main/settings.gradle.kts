@@ -70,7 +70,7 @@ fun includeModuleRecursively(name: String) {
 }
 
 include(":composeApp")
-includeModuleRecursively("example")
+includeModuleRecursively("todolist")
 includeModuleRecursively("ai_chat")
 includeModuleRecursively("dashboard")
 includeModuleRecursively("authentication")

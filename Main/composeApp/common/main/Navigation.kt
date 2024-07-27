@@ -16,9 +16,8 @@ import androidx.navigation.navArgument
 import common.StateSaver
 import core.ui.SingularityScope
 import dashboard.DashboardPane
-import example.presentation.TodoDetailPane
-import example.presentation.TodoDetailPanePld
-
+import todolist.pane.tododetail.TodoDetailPane
+import todolist.pane.tododetail.TodoDetailPanePld
 
 context(SingularityScope, MainContext)
 @Composable
@@ -28,9 +27,8 @@ fun MainNavigation() {
 
     NavHost(
         navController = navController,
-        startDestination = "dashboard"
+        startDestination = "dashboard",
     ) {
-
         composable(
             route = "dashboard",
         ) {
@@ -41,17 +39,18 @@ fun MainNavigation() {
                     },
                     gotoTodoDetail = {
                         navController.navigate("todo-detail/${it.value}")
-                    }
+                    },
                 )
             }
         }
 
         composable(
-            route = "groot"
+            route = "groot",
         ) {
-            val payload = remember {
-                AIChatPanePld()
-            }
+            val payload =
+                remember {
+                    AIChatPanePld()
+                }
 
             with(dashboardContext.aiChatContext) {
                 AIChatPane(
@@ -59,40 +58,42 @@ fun MainNavigation() {
                     stateSaver = stateSaver,
                     onBack = {
                         navController.popBackStack()
-                    }
+                    },
                 )
             }
         }
 
         composable(
             route = "todo-detail/{todoID}",
-            arguments = listOf(
-                navArgument("todoID") {
-                    type = NavType.StringType
-                }
-            )
+            arguments =
+                listOf(
+                    navArgument("todoID") {
+                        type = NavType.StringType
+                    },
+                ),
         ) { backstackEntry ->
 
-            val userID = backstackEntry.arguments
-                ?.getString("todoID")
-                ?: throw Error("I'm too lazy to handle error.")
+            val userID =
+                backstackEntry.arguments
+                    ?.getString("todoID")
+                    ?: throw Error("I'm too lazy to handle error.")
 
-            val payload = remember(userID) {
-                TodoDetailPanePld(
-                    id = userID,
-                    onBack = {
-                        navController.popBackStack()
-                    }
-                )
-            }
+            val payload =
+                remember(userID) {
+                    TodoDetailPanePld(
+                        id = userID,
+                        onBack = {
+                            navController.popBackStack()
+                        },
+                    )
+                }
 
             with(exampleContext) {
                 TodoDetailPane(
                     pld = payload,
-                    stateSaver = stateSaver
+                    stateSaver = stateSaver,
                 )
             }
         }
-
     }
 }

@@ -22,7 +22,7 @@ kotlin {
             System("core")
             Shared("common")
 
-            model("example")
+            model("todolist")
         }
     }
 }

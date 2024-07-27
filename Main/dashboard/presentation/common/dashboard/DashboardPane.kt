@@ -26,10 +26,10 @@ import core.ui.designsystem.component.STabRow
 import core.ui.designsystem.component.STextLabel
 import core.ui.designsystem.`extra-large-padding`
 import core.ui.designsystem.`large-padding`
-import example.model.TodoID
 import org.jetbrains.compose.resources.painterResource
 import system.designsystem.resources.Res
 import system.designsystem.resources.groot
+import todolist.TodoID
 
 context(SingularityScope, Context)
 @Composable
@@ -37,7 +37,6 @@ fun DashboardPane(
     gotoGroot: () -> Unit = {},
     gotoTodoDetail: (TodoID) -> Unit = {},
 ) {
-
     val attr = SingularityTheme.attr
     val tabs = listOf("Singularity", "Todo List")
     val tabNavController = rememberNavController()
@@ -47,15 +46,18 @@ fun DashboardPane(
     LaunchedEffect(Unit) {
         tabNavController.addOnDestinationChangedListener { _, destination, _ ->
             selectedTabIndex =
-                if (destination.route?.contains("todo") == true)
+                if (destination.route?.contains("todo") == true) {
                     1
-                else 0
+                } else {
+                    0
+                }
         }
     }
 
     Box(
-        modifier = Modifier
-            .imePadding()
+        modifier =
+            Modifier
+                .imePadding(),
     ) {
         Column {
             STabRow(
@@ -77,30 +79,34 @@ fun DashboardPane(
                 }
             }
             Box(
-                modifier = Modifier.fillMaxWidth()
-                    .weight(1f),
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .weight(1f),
             ) {
                 DashboardTabNavigation(
                     navController = tabNavController,
                     stateSaver = stateSaver,
-                    goToTodoDetail = gotoTodoDetail
+                    goToTodoDetail = gotoTodoDetail,
                 )
             }
         }
 
         SFloatingActionButton(
-            modifier = Modifier.align(Alignment.BottomEnd)
-                .padding(
-                    vertical = attr.`extra-large-padding` + attr.`large-padding`,
-                    horizontal = attr.`large-padding`
-                ),
+            modifier =
+                Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(
+                        vertical = attr.`extra-large-padding` + attr.`large-padding`,
+                        horizontal = attr.`large-padding`,
+                    ),
             onClick = {
                 gotoGroot.invoke()
-            }
+            },
         ) {
             SMediumIcon(
                 painter = painterResource(Res.drawable.groot),
-                contentDescription = "Groot customer service"
+                contentDescription = "Groot customer service",
             )
         }
     }

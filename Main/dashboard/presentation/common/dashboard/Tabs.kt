@@ -7,9 +7,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import common.StateSaver
 import core.ui.SingularityScope
-import example.model.TodoID
-import example.presentation.TodoListPane
-import example.presentation.TodoListPanePld
+import todolist.TodoID
+import todolist.pane.todolist.TodoListPane
+import todolist.pane.todolist.TodoListPanePld
 
 context(SingularityScope, Context)
 @Composable
@@ -18,12 +18,10 @@ fun DashboardTabNavigation(
     stateSaver: StateSaver,
     goToTodoDetail: (TodoID) -> Unit,
 ) {
-
     NavHost(
         navController = navController,
         startDestination = "prolog",
     ) {
-
         composable(
             route = "prolog",
         ) {

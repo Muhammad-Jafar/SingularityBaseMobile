@@ -7,7 +7,7 @@ import plugin.convention.companion.presentation
 plugins {
     id("LibraryConventionV1")
     id("CompileIOS")
-    /*id("CompileWasm")*/
+    // id("CompileWasm")
     id("FeatureCoroutine")
     id("FeaturePane")
     id("FeatureSerialization")
@@ -27,8 +27,8 @@ kotlin {
 
             model("ai_chat")
             presentation("ai_chat")
-            model("example")
-            presentation("example")
+            model("todolist")
+            presentation("todolist")
         }
     }
 }

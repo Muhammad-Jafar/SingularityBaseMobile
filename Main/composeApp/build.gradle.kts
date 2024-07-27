@@ -12,7 +12,7 @@ import plugin.convention.companion.presentation
 plugins {
     id("AppConventionV1")
     id("CompileIOS")
-    /*id("CompileWasm")*/
+    // id("CompileWasm")
     id("FeatureCoroutine")
     id("FeaturePane")
     id("FeatureSerialization")
@@ -22,11 +22,12 @@ plugins {
     id("ProjectConfig")
 }
 
-val ReleaseNote = "ReleaseNote.md"
-    .let {
-        val file = File(project.projectDir, it)
-        ReleaseNote(file)
-    }
+val ReleaseNote =
+    "ReleaseNote.md"
+        .let {
+            val file = File(project.projectDir, it)
+            ReleaseNote(file)
+        }
 
 kotlin {
     sourceSets {
@@ -41,8 +42,8 @@ kotlin {
 
             presentation("dashboard")
             model("dashboard")
-            presentation("example")
-            model("example")
+            presentation("todolist")
+            model("todolist")
             presentation("ai_chat")
             model("ai_chat")
         }
@@ -53,11 +54,11 @@ android {
     namespace = "com.singularity.basemobile"
 
     defaultConfig {
-        resValue ("string", "app_name", cfg("APP_NAME").replace("\"",""))
+        resValue("string", "app_name", cfg("APP_NAME").replace("\"", ""))
 
         applicationId = "com.singularity.basemobile"
-        versionNameSuffix = cfg("APP_VERSION_NAME_SUFFIX").replace("\"","")
-        applicationIdSuffix = cfg("APP_ID_SUFFIX").replace("\"","")
+        versionNameSuffix = cfg("APP_VERSION_NAME_SUFFIX").replace("\"", "")
+        applicationIdSuffix = cfg("APP_ID_SUFFIX").replace("\"", "")
 
         versionCode = ReleaseNote.versionCode
         versionName = ReleaseNote.versionName

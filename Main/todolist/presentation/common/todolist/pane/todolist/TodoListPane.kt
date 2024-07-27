@@ -2,7 +2,7 @@
  * Copyright (c) 2024 Singularity Indonesia (stefanus.ayudha@gmail.com)
  * You are not allowed to remove the copyright. Unless you have a "free software" licence.
  */
-package example.presentation
+package todolist.pane.todolist
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Box
@@ -47,11 +47,11 @@ import core.ui.designsystem.component.STextLabel
 import core.ui.designsystem.component.STextTitle
 import core.ui.designsystem.`large-padding`
 import core.ui.designsystem.`medium-padding`
-import example.model.Context
-import example.model.TodoID
-import example.presentation.entity.TodoDisplay
-import example.presentation.entity.TodoFilter
 import kotlinx.serialization.encodeToString
+import todolist.Context
+import todolist.TodoID
+import todolist.entity.TodoDisplay
+import todolist.entity.TodoFilter
 
 @Immutable
 data class TodoListPanePld(
@@ -63,19 +63,20 @@ context(SingularityScope, Context)
 fun TodoListPane(
     pld: TodoListPanePld,
     stateSaver: StateSaver = StateSaver(),
-    viewModel: TodoListPaneViewModel = viewModel<TodoListPaneViewModel>(
-        factory = viewModelFactory {
-            initializer {
-                TodoListPaneViewModel(
-                    this@Context,
-                    stateSaver.pop() ?: TodoListPaneState.SaveAble()
-                )
-            }
-        }
-    ),
-    goToTodoDetail: (TodoID) -> Unit
+    viewModel: TodoListPaneViewModel =
+        viewModel<TodoListPaneViewModel>(
+            factory =
+                viewModelFactory {
+                    initializer {
+                        TodoListPaneViewModel(
+                            this@Context,
+                            stateSaver.pop() ?: TodoListPaneState.SaveAble(),
+                        )
+                    }
+                },
+        ),
+    goToTodoDetail: (TodoID) -> Unit,
 ) {
-
     val attr = SingularityTheme.attr
     val states = viewModel.reducer
     val todoListDisplay by states.todoListDisplay.collectAsState(listOf())
@@ -84,29 +85,32 @@ fun TodoListPane(
 
     // preload
     LaunchedEffect(
-        states.dataIsNotLoaded
+        states.dataIsNotLoaded,
     ) {
         viewModel.Post(Intent.Reload)
     }
 
     LaunchedEffect(todoListDisplay) {
-        val selectedIndex = todoListDisplay
-            .indexOfFirst { it.selected }
-            .let { if (it < 0) null else it }
+        val selectedIndex =
+            todoListDisplay
+                .indexOfFirst { it.selected }
+                .let { if (it < 0) null else it }
 
-        if (selectedIndex != null)
+        if (selectedIndex != null) {
             scrollState.animateScrollToItem(selectedIndex)
+        }
     }
 
     Column(
-        modifier = Modifier.fillMaxSize()
-            .imePadding()
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .imePadding(),
     ) {
-
         val platformName by states.platformName.collectAsState("")
         STextTitle(
             text = platformName,
-            modifier = Modifier.padding(horizontal = attr.`large-padding`)
+            modifier = Modifier.padding(horizontal = attr.`large-padding`),
         )
 
         val status by states.statusDisplay.collectAsState("")
@@ -125,25 +129,27 @@ fun TodoListPane(
             onSearch = { q: String ->
                 clue = q
                 viewModel.Post(Intent.Search(q))
-            }
+            },
         )
 
         SMediumSpacing()
         ButtonFilters(
             onFilter = { filter: TodoFilter ->
                 val isAlreadySelected = states.todoFilters.value.contains(filter)
-                if (isAlreadySelected)
+                if (isAlreadySelected) {
                     viewModel.Post(Intent.RemoveFilter(filter))
-                else
+                } else {
                     viewModel.Post(Intent.AddFilter(filter))
+                }
             },
-            onClearFilter = { viewModel.Post(Intent.ClearFilter) }
+            onClearFilter = { viewModel.Post(Intent.ClearFilter) },
         )
         SMediumSpacing()
         TodoList(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
             todoListDisplay = todoListDisplay,
             scrollState = scrollState,
             error = errorDisplay2,
@@ -163,35 +169,29 @@ fun TodoListPane(
 }
 
 @Composable
-private fun Status(
-    status: String
-) {
+private fun Status(status: String) {
     val attr = SingularityTheme.attr
     STextLabel(
         text = status,
-        modifier = Modifier.padding(horizontal = attr.`large-padding`)
+        modifier = Modifier.padding(horizontal = attr.`large-padding`),
     )
 }
 
 @Composable
-private fun Error(
-    error: String
-) {
+private fun Error(error: String) {
     val attr = SingularityTheme.attr
     STextLabel(
         text = error,
-        modifier = Modifier.padding(horizontal = attr.`large-padding`)
+        modifier = Modifier.padding(horizontal = attr.`large-padding`),
     )
 }
 
 @Composable
-private fun AppliedFilters(
-    appliedFilters: String
-) {
+private fun AppliedFilters(appliedFilters: String) {
     val attr = SingularityTheme.attr
     STextLabel(
         text = appliedFilters,
-        modifier = Modifier.padding(horizontal = attr.`large-padding`)
+        modifier = Modifier.padding(horizontal = attr.`large-padding`),
     )
 }
 
@@ -212,7 +212,7 @@ private fun TodoList(
         items(todoListDisplay) {
             TodoItem(
                 item = it,
-                onClick = onItemClicked
+                onClick = onItemClicked,
             )
         }
 
@@ -221,11 +221,12 @@ private fun TodoList(
         }
 
         item(error) {
-            if (error.isNotBlank())
+            if (error.isNotBlank()) {
                 Reload(
                     error = error,
-                    onReload = onReload
+                    onReload = onReload,
                 )
+            }
         }
     }
 }
@@ -233,36 +234,41 @@ private fun TodoList(
 @Composable
 fun Reload(
     error: String,
-    onReload: () -> Unit
+    onReload: () -> Unit,
 ) {
     val attr = SingularityTheme.attr
 
     Box(
-        modifier = Modifier
-            .padding(horizontal = attr.`large-padding`)
-            .fillMaxWidth()
+        modifier =
+            Modifier
+                .padding(horizontal = attr.`large-padding`)
+                .fillMaxWidth(),
     ) {
         Card(
-            modifier = Modifier
-                .fillMaxWidth()
+            modifier =
+                Modifier
+                    .fillMaxWidth(),
         ) {
             Column(
-                modifier = Modifier
-                    .padding(attr.`large-padding`)
+                modifier =
+                    Modifier
+                        .padding(attr.`large-padding`),
             ) {
                 STextLabel(
-                    modifier = Modifier
-                        .align(Alignment.CenterHorizontally),
-                    text = error
+                    modifier =
+                        Modifier
+                            .align(Alignment.CenterHorizontally),
+                    text = error,
                 )
                 Button(
-                    modifier = Modifier
-                        .padding(top = attr.`large-padding`)
-                        .align(Alignment.End),
-                    onClick = onReload
+                    modifier =
+                        Modifier
+                            .padding(top = attr.`large-padding`)
+                            .align(Alignment.End),
+                    onClick = onReload,
                 ) {
                     STextLabel(
-                        text = "Reload"
+                        text = "Reload",
                     )
                 }
             }
@@ -274,28 +280,26 @@ context(SingularityScope)
 @Composable
 private fun ButtonFilters(
     onFilter: (TodoFilter) -> Unit,
-    onClearFilter: () -> Unit
+    onClearFilter: () -> Unit,
 ) {
     Row {
-
         SLargeSpacing()
         SPrimaryButton(
-            onClick = { onFilter.invoke(TodoFilter.ShowCompleteOnly) }
+            onClick = { onFilter.invoke(TodoFilter.ShowCompleteOnly) },
         ) {
             STextLabel(
-                text = "Completed"
+                text = "Completed",
             )
         }
 
         SMediumSpacing()
         SPrimaryButton(
-            onClick = { onClearFilter.invoke() }
+            onClick = { onClearFilter.invoke() },
         ) {
             STextLabel(
-                text = "Show All"
+                text = "Show All",
             )
         }
-
     }
 }
 
@@ -307,12 +311,13 @@ private fun TodoItem(
 ) {
     val attr = SingularityTheme.attr
     Column(
-        modifier = Modifier
-            .padding(horizontal = attr.`large-padding`)
+        modifier =
+            Modifier
+                .padding(horizontal = attr.`large-padding`),
     ) {
         TodoCard(
             todo = item,
-            onClick = onClick
+            onClick = onClick,
         )
         SLargeSpacing()
     }
@@ -322,46 +327,53 @@ context(SingularityScope)
 @Composable
 private fun TodoCard(
     todo: TodoDisplay,
-    onClick: (TodoDisplay) -> Unit
+    onClick: (TodoDisplay) -> Unit,
 ) {
     val attr = SingularityTheme.attr
     SLargeCard(
         onClick = { onClick.invoke(todo) },
-        colors = if (todo.selected)
-            CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                contentColor = MaterialTheme.colorScheme.onPrimaryContainer
-            )
-        else
-            CardDefaults.cardColors(),
-        modifier = Modifier
-            .fillMaxWidth()
+        colors =
+            if (todo.selected) {
+                CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                )
+            } else {
+                CardDefaults.cardColors()
+            },
+        modifier =
+            Modifier
+                .fillMaxWidth(),
     ) {
         Column(
-            modifier = Modifier
-                .padding(attr.`large-padding`)
+            modifier =
+                Modifier
+                    .padding(attr.`large-padding`),
         ) {
             Column {
                 STextBody(
-                    text = PrettyJson
-                        .encodeToString(todo)
+                    text =
+                        PrettyJson
+                            .encodeToString(todo),
                 )
 
-                if (todo.selected)
+                if (todo.selected) {
                     SMediumSpacing()
+                }
 
                 AnimatedVisibility(todo.selected) {
                     Card(
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
                     ) {
                         STextLabel(
                             text = "Click again to open detail",
-                            modifier = Modifier
-                                .align(Alignment.CenterHorizontally)
-                                .padding(
-                                    horizontal = attr.`large-padding`,
-                                    vertical = attr.`medium-padding`
-                                )
+                            modifier =
+                                Modifier
+                                    .align(Alignment.CenterHorizontally)
+                                    .padding(
+                                        horizontal = attr.`large-padding`,
+                                        vertical = attr.`medium-padding`,
+                                    ),
                         )
                     }
                 }
