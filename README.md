@@ -9,10 +9,6 @@ This code is free to use and distribute under the Creative Commons License.
 
 This guide will help you to shape the thinking framework and understanding the codebase: [README_GUIDE.md](Docs/Guide)
 
-# Previously; Set me free? Sure why not.
-The CC license is created to protect the creator and the team, under the name of singularity indonesia.
-You are not allowed to remove the copyright notice wherever it is. However, you can do so with a "free software" license. You can get the license by sending a request via email to: stefanus.ayudha@gmail. com.  The free software license is free of charge. We do this to keep track of who is using our software to help further in the future, as well as to help us to improve our software. After you have a "free software" license, you can do whatever you want and are no longer bound to us.
-
 ## What is so cool
 ### Function First!
 This codebase is designed to be function-oriented, pushing the boundaries of Kotlin functional programming.
@@ -100,6 +96,10 @@ $./create.sh -t "system" -n "example"
 
 ## FAQ
 See: [FAQ.md](Docs/FAQ.md)
+
+## Licence Policy
+The CC license is created to protect the creator and the team, under the name of singularity indonesia.
+You are not allowed to remove the copyright notice wherever it is. However, you can do so with a "free software" license. You can get the license by sending a request via email to: stefanus.ayudha@gmail. com.  The free software license is free of charge. We do this to keep track of who is using our software to help further in the future, as well as to help us to improve our software. After you have a "free software" license, you can do whatever you want and are no longer bound to us.
 
 ## Meet the author
 [Stefanus Ayudha](https://www.linkedin.com/in/stefanus-ayudha-447a98b5/).
