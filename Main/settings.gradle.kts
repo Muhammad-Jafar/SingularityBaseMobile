@@ -39,9 +39,7 @@ dependencyResolutionManagement {
                     ?.filter { it.listFiles()?.map { it.name }?.contains("build.gradle.kts") == true }
                     ?.onEach { dir ->
                         substitute(module("system:${dir.name}")).using(project(":${dir.name}"))
-                    }
-                    ?.toList()
-
+                    }?.toList()
             }
         }
         includeBuild("../Shared") {
@@ -54,63 +52,25 @@ dependencyResolutionManagement {
                     ?.filter { it.listFiles()?.map { it.name }?.contains("build.gradle.kts") == true }
                     ?.onEach { dir ->
                         substitute(module("shared:${dir.name}")).using(project(":${dir.name}"))
-                    }
-                    ?.toList()
+                    }?.toList()
             }
         }
     }
 }
 
-File(settingsDir, "./")
-    .listFiles()
-    ?.asSequence()
-    ?.filter { it.isDirectory }
-    ?.filter { it.listFiles()?.map { it.name }?.contains("build.gradle.kts") == true }
-    ?.onEach { dir ->
-        include(":${dir.name}")
-    }
-    ?.toList()
+fun includeModuleRecursively(name: String) {
+    File(settingsDir, "./$name")
+        .listFiles()
+        ?.asSequence()
+        ?.filter { it.isDirectory }
+        ?.filter { it.listFiles()?.map { it.name }?.contains("build.gradle.kts") == true }
+        ?.onEach { dir ->
+            include(":$name:${dir.name}")
+        }?.toList()
+}
 
-
-File(settingsDir, "./example")
-    .listFiles()
-    ?.asSequence()
-    ?.filter { it.isDirectory }
-    ?.filter { it.listFiles()?.map { it.name }?.contains("build.gradle.kts") == true }
-    ?.onEach { dir ->
-        include(":example:${dir.name}")
-    }
-    ?.toList()
-
-
-File(settingsDir, "./ai_chat")
-    .listFiles()
-    ?.asSequence()
-    ?.filter { it.isDirectory }
-    ?.filter { it.listFiles()?.map { it.name }?.contains("build.gradle.kts") == true }
-    ?.onEach { dir ->
-        include(":ai_chat:${dir.name}")
-    }
-    ?.toList()
-
-
-File(settingsDir, "./dashboard")
-    .listFiles()
-    ?.asSequence()
-    ?.filter { it.isDirectory }
-    ?.filter { it.listFiles()?.map { it.name }?.contains("build.gradle.kts") == true }
-    ?.onEach { dir ->
-        include(":dashboard:${dir.name}")
-    }
-    ?.toList()
-
-
-File(settingsDir, "./authentication")
-    .listFiles()
-    ?.asSequence()
-    ?.filter { it.isDirectory }
-    ?.filter { it.listFiles()?.map { it.name }?.contains("build.gradle.kts") == true }
-    ?.onEach { dir ->
-        include(":authentication:${dir.name}")
-    }
-    ?.toList()
+include(":composeApp")
+includeModuleRecursively("example")
+includeModuleRecursively("ai_chat")
+includeModuleRecursively("dashboard")
+includeModuleRecursively("authentication")
