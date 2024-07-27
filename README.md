@@ -99,7 +99,7 @@ See: [FAQ.md](Docs/FAQ.md)
 
 ## License Policy
 The CC license is created to protect the creator and the team, under the name of singularity indonesia.
-You are not allowed to remove the copyright notice wherever it is. However, you can do so with a "free software" license. You can get the license by sending a request via email to: stefanus.ayudha@gmail. com.  The free software license is free of charge. We do this to keep track of who is using our software to help further in the future, as well as to help us to improve our software. After you have a "free software" license, you can do whatever you want and are no longer bound to us.
+You are not allowed to remove the copyright notice wherever it is. However, you can do so with a "free software" license. You can get the license by sending a request via email to: `stefanus.ayudha@gmail.com`.  The free software license is free of charge. We do this to keep track of who is using our software to help further in the future, as well as to help us to improve our software. After you have a "free software" license, you can do whatever you want and are no longer bound to us.
 
 ## Meet the author
 [Stefanus Ayudha](https://www.linkedin.com/in/stefanus-ayudha-447a98b5/).
