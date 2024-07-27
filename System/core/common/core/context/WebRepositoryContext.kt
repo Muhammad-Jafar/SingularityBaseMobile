@@ -4,7 +4,9 @@
  */
 package core.context
 
-interface WebRepositoryContext {
+import core.test.Mockable
 
+@Mockable
+interface WebRepositoryContext {
     val webClient: WebClient
 }

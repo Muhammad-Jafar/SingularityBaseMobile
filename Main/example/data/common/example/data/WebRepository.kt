@@ -10,10 +10,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 
-
 suspend fun WebRepositoryContext.GetTodos(): Result<List<Todo>> =
     withContext(Dispatchers.Default) {
-        webClient.get("todos/")
+        webClient
+            .get("todos/")
             .map {
                 val stringResponse = it.invoke().decodeToString()
                 Json.decodeFromString<List<Todo>>(stringResponse)

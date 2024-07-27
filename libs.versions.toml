@@ -15,17 +15,20 @@ compose = "1.6.8"
 compose-plugin = "1.6.11"
 junit = "4.13.2"
 kotlin = "2.0.20-Beta1"
+ksp = "2.0.20-Beta2-1.0.23"
 ktor = "2.3.11"
 kotlinx-serialization-json = "1.7.0"
 compose-navigation = "2.7.0-alpha07"
 gson = "2.10.1"
 lifecycleViewmodelCompose = "2.8.0"
+mockative = "2.2.2"
 pluto = "2.2.2"
 coroutine = "1.9.0-RC"
 generativeai = "0.9.0"
 orbit-mvi = "9.0.0"
 
 [libraries]
+kotlin-allopen = {module = "org.jetbrains.kotlin:kotlin-allopen", version.ref = "kotlin"}
 compose-gradle-plugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose-plugin" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -60,6 +63,7 @@ coroutine-core-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js
 
 # pluto
 lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
+mockative = { module = "io.mockative:mockative", version.ref = "mockative" }
 pluto = { module = "com.plutolib:pluto", version.ref = "pluto" }
 pluto-no-op = { module = "com.plutolib:pluto-no-op", version.ref = "pluto" }
 pluto-bundle-core = { module = "com.plutolib.plugins:bundle-core", version.ref = "pluto" }
@@ -96,3 +100,5 @@ jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+devtools_ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kotlin-all-open = { id = "org.jetbrains.kotlin.plugin.allopen", version = "1.8.22" }

@@ -1,7 +1,9 @@
 package core.context
 
-interface WebClient {
+import core.test.Mockable
 
+@Mockable
+interface WebClient {
     val host: String
 
     val basePath: String
@@ -12,9 +14,9 @@ interface WebClient {
      */
     suspend fun post(
         endpoint: String? = null,
-        headers: Map<String,String>? = null,
+        headers: Map<String, String>? = null,
         params: Map<String, String>? = null,
-        body: String?
+        body: String?,
     ): Result<suspend () -> ByteArray>
 
     /**
@@ -22,8 +24,8 @@ interface WebClient {
      */
     suspend fun get(
         endpoint: String? = null,
-        headers: Map<String,String>? = null,
-        params: Map<String, String>? = null
+        headers: Map<String, String>? = null,
+        params: Map<String, String>? = null,
     ): Result<suspend () -> ByteArray>
 
     /**
@@ -32,8 +34,8 @@ interface WebClient {
      */
     suspend fun put(
         endpoint: String? = null,
-        headers: Map<String,String>? = null,
+        headers: Map<String, String>? = null,
         params: Map<String, String>? = null,
-        body: String?
+        body: String?,
     ): Result<suspend () -> ByteArray>
 }

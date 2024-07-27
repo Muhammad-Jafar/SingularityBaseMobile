@@ -9,10 +9,11 @@ import plugin.convention.companion.model
 plugins {
     id("LibraryConventionV1")
     id("CompileIOS")
-    /*id("CompileWasm")*/
+    // id("CompileWasm")
     id("FeatureCoroutine")
     id("FeatureHttpClient")
     id("FeatureSerialization")
+    id("AndroidTest")
 }
 
 kotlin {
@@ -26,9 +27,15 @@ kotlin {
     }
 }
 
-
 android {
     namespace = "main.example.data"
 }
+
+// /** fixme: Required by AndroidUnitTest, for now **/
+// if (taskIsRunningTest()) {
+//    extensions.configure<AllOpenExtension> {
+//        annotation("com.myannotation.MyAnnotation")
+//    }
+// }
 
 task("testClasses")

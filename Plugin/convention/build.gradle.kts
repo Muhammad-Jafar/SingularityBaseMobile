@@ -23,6 +23,7 @@ dependencies {
     implementation(libs.gradle)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.compose.gradle.plugin)
+    implementation(libs.kotlin.allopen)
 }
 
 gradlePlugin {
@@ -70,6 +71,10 @@ gradlePlugin {
         register("ProjectConfig") {
             id = "ProjectConfig"
             implementationClass = "plugin.convention.ProjectConfig"
+        }
+        register("AndroidTest") {
+            id = "AndroidTest"
+            implementationClass = "plugin.convention.AndroidTest"
         }
     }
 }
