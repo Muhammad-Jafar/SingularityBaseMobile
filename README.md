@@ -95,7 +95,7 @@ $./create.sh -t "shared" -n "example"
 $./create.sh -t "system" -n "example"
 ```
 
-### Second Brain
+### Second Brain (With Obsidian)
 Forget developer documentation, say hi to Second Brain!
 ![Second Brain](https://github.com/SingularityIndonesia/SingularityBaseMobile/blob/base/Docs/Screenshot%202024-07-28%20at%2011.09.57.png)
 
