@@ -2,7 +2,7 @@ A composable function can only contains max 2 scope level.
 scope 0:  is the root scope.
 scope 1: is the collection-scope's content.
 
-Good: Max Depth = 2
+Good: Max Depth <= 2
 ```kotlin
 @Composable 
 fun GoodCode() {
