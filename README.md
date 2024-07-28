@@ -12,7 +12,6 @@ This guide will help you to shape the thinking framework and understanding the c
 ## What is so cool
 ### Function First!
 This codebase is designed to be function-oriented, pushing the boundaries of Kotlin functional programming.
-No Abstraction, No dependency Injection only Functions!
 ### I am Groot!
 This codebase comes with Groot AI assistant module as example of Gemini AI integration. This codebase featured with gemini module to make it ready to launch AI powered Application.
 <p>
