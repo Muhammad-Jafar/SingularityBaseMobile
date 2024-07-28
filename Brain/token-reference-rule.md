@@ -8,4 +8,4 @@ Let say we have `color-on-primary` that referring to static color of `Colors.whi
 - **descriptive naming**:
   Reference must be descriptive and expose its full identity within its name.
   `internal val TextSansSerif32NormalLS0LH40 get() = Color.White`.
-  The idea is to make it not duplicated so multiple token can refer single clear identity reference.
+  The idea is to make it not duplicated so multiple token can refer to single clear identity reference.
