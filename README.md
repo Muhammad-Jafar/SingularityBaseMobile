@@ -97,7 +97,7 @@ $./create.sh -t "system" -n "example"
 
 ### Second Brain
 Forget developer documentation, say hi to Second Brain!
-![Second Brain](https://github.com/SingularityIndonesia/SingularityBaseMobile/blob/base/Docs/Screenshot%202024-07-28%20at%2010.00.55.png)
+![Second Brain](https://github.com/SingularityIndonesia/SingularityBaseMobile/blob/base/Docs/Screenshot%202024-07-28%20at%2011.09.57.png)
 
 
 ## FAQ
