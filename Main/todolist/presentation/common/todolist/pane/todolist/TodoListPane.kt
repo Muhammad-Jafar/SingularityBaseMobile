@@ -5,6 +5,7 @@
 package todolist.pane.todolist
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -46,6 +47,7 @@ import core.ui.designsystem.component.STextBody
 import core.ui.designsystem.component.STextLabel
 import core.ui.designsystem.component.STextTitle
 import core.ui.designsystem.`large-padding`
+import core.ui.designsystem.`large-spacing`
 import core.ui.designsystem.`medium-padding`
 import kotlinx.serialization.encodeToString
 import todolist.Context
@@ -205,19 +207,18 @@ private fun TodoList(
     onReload: () -> Unit,
     onItemClicked: (TodoDisplay) -> Unit,
 ) {
+    val attr = SingularityTheme.attr
     SLazyColumn(
         modifier = modifier,
         state = scrollState,
+        verticalArrangement = Arrangement.spacedBy(attr.`large-spacing`),
     ) {
         items(todoListDisplay) {
             TodoItem(
+                modifier = Modifier.padding(horizontal = attr.`large-padding`),
                 item = it,
                 onClick = onItemClicked,
             )
-        }
-
-        item {
-            SLargeSpacing()
         }
 
         item(error) {
@@ -306,20 +307,18 @@ private fun ButtonFilters(
 context(SingularityScope)
 @Composable
 private fun TodoItem(
+    modifier: Modifier = Modifier,
     item: TodoDisplay,
     onClick: (TodoDisplay) -> Unit,
 ) {
     val attr = SingularityTheme.attr
-    Column(
-        modifier =
-            Modifier
-                .padding(horizontal = attr.`large-padding`),
+    Box(
+        modifier = modifier,
     ) {
         TodoCard(
             todo = item,
             onClick = onClick,
         )
-        SLargeSpacing()
     }
 }
 
