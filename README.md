@@ -95,6 +95,11 @@ $./create.sh -t "shared" -n "example"
 $./create.sh -t "system" -n "example"
 ```
 
+### Second Brain
+Forget developer documentation, say hi to Second Brain!
+<img width="1223" alt="Screenshot 2024-07-28 at 10 00 55" src="https://github.com/user-attachments/assets/2ecc887b-65c3-4132-aa96-c8302390668c">
+
+
 ## FAQ
 See: [FAQ.md](Docs/FAQ.md)
 
