@@ -37,7 +37,7 @@ fun GoodCode() {
 Bad: Depth > 2
 ```kotlin
 @Composable 
-fun GoodCode() {
+fun BadCode() {
 	// root: scope level 0
 	val attr = SingularityTheme.attr
 	Column(
