@@ -5,6 +5,7 @@
 package core.ui.designsystem.component
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.material3.MaterialTheme
@@ -36,43 +37,44 @@ fun SSurface(
     shadowElevation: Dp = 0.dp,
     border: BorderStroke? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
-
     Surface(
-        onClick = {
-            log("user clicking surface")
-            onClick.invoke()
-        },
-        modifier = Modifier.pointerInput(Unit) {
-            awaitEachGesture {
+        modifier =
+            Modifier
+                .clickable(
+                    interactionSource = interactionSource,
+                    enabled = true,
+                    indication = null,
+                    onClick = {
+                        log("user clicking surface")
+                        onClick.invoke()
+                    },
+                ).pointerInput(Unit) {
+                    awaitEachGesture {
+                        awaitPointerEvent()
+                        // ACTION_DOWN here
 
-                awaitPointerEvent()
-                // ACTION_DOWN here
+                        do {
+                            // This PointerEvent contains details including
+                            // event, id, position and more
+                            val event: PointerEvent = awaitPointerEvent()
+                            // ACTION_MOVE loop
 
-                do {
-
-                    //This PointerEvent contains details including
-                    // event, id, position and more
-                    val event: PointerEvent = awaitPointerEvent()
-                    // ACTION_MOVE loop
-
-                    // Consuming event prevents other gestures or scroll to intercept
-                    event.changes.forEach { pointerInputChange: PointerInputChange ->
-                        /*pointerInputChange.consumePositionChange()*/
-                        log("User touching the screen x: ${pointerInputChange.position.x}, y: ${pointerInputChange.position.y}")
+                            // Consuming event prevents other gestures or scroll to intercept
+                            event.changes.forEach { pointerInputChange: PointerInputChange ->
+                                // pointerInputChange.consumePositionChange()
+                                log("User touching the screen x: ${pointerInputChange.position.x}, y: ${pointerInputChange.position.y}")
+                            }
+                        } while (event.changes.any { it.pressed })
                     }
-                } while (event.changes.any { it.pressed })
-            }
-        }.then(modifier),
-        enabled = enabled,
+                },
         shape = shape,
         color = color,
         contentColor = contentColor,
         tonalElevation = tonalElevation,
         shadowElevation = shadowElevation,
         border = border,
-        interactionSource = interactionSource,
         content = content,
     )
 }
