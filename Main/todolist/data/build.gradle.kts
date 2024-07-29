@@ -13,6 +13,7 @@ plugins {
     id("FeatureCoroutine")
     id("FeatureHttpClient")
     id("FeatureSerialization")
+    id("FeatureContextReceiver")
     id("AndroidTest")
 }
 

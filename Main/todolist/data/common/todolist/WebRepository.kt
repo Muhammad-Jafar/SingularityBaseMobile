@@ -9,7 +9,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 
-suspend fun WebRepositoryContext.GetTodos(): Result<List<Todo>> =
+context(WebRepositoryContext)
+suspend fun GetTodos(): Result<List<Todo>> =
     withContext(Dispatchers.Default) {
         webClient
             .get("todos/")
