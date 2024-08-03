@@ -1,18 +1,18 @@
 package main
 
 import ProjectConfig
-import main.modules.ExampleWebRepositoryContext
+import main.modules.TodoListWebRepositoryContext
 import ai_chat.Context as AIChatContext
 import dashboard.Context as DashboardContext
-import todolist.Context as ExampleContext
+import todolist.Context as TodoListContext
 
 // Centralized context control
 class MainContext {
     // ExampleModule's Context
-    val exampleContext: ExampleContext by lazy {
-        ExampleContext(
+    val todoListContext: TodoListContext by lazy {
+        TodoListContext(
             webRepositoryContext =
-                ExampleWebRepositoryContext(
+                TodoListWebRepositoryContext(
                     ProjectConfig.HOST,
                     ProjectConfig.TODO_API_BASE_PATH,
                 ),
@@ -27,7 +27,7 @@ class MainContext {
 
     val dashboardContext: DashboardContext by lazy {
         DashboardContext(
-            exampleContext = exampleContext,
+            todoListContext = todoListContext,
             aiChatContext = aiChatContext,
         )
     }

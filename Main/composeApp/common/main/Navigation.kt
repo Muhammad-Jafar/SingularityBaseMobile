@@ -88,7 +88,7 @@ fun MainNavigation() {
                     )
                 }
 
-            with(exampleContext) {
+            with(todoListContext) {
                 TodoDetailPane(
                     pld = payload,
                     stateSaver = stateSaver,
