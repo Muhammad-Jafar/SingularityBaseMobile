@@ -4,15 +4,15 @@
  */
 package todolist
 
-import core.context.WebRepositoryContext
+import core.context.WebClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 
-context(WebRepositoryContext)
+context(WebClient)
 suspend fun GetTodos(): Result<List<Todo>> =
     withContext(Dispatchers.Default) {
-        webClient
+        this@WebClient
             .get("todos/")
             .map {
                 val stringResponse = it.invoke().decodeToString()

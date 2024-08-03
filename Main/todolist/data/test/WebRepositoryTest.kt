@@ -5,7 +5,6 @@ import core.context.WebRepositoryContext
 import io.mockative.Mock
 import io.mockative.classOf
 import io.mockative.coEvery
-import io.mockative.every
 import io.mockative.mock
 import kotlinx.coroutines.runBlocking
 import todolist.GetTodos
@@ -23,7 +22,7 @@ class WebRepositoryTest {
 
     @Test
     fun `get-todos-success`() {
-        every { context.webClient }.invokes { webClient }
+        // every { context.webClient }.invokes { webClient }
 
         runBlocking {
             val response =
@@ -52,7 +51,7 @@ class WebRepositoryTest {
 
             coEvery { webClient.get("todos/") }.invokes { Result.success(suspend { response.toByteArray() }) }
 
-            val result = with(context) { GetTodos() }
+            val result = with(webClient) { GetTodos() }
 
             assertTrue { result.isSuccess }
             assertTrue { result.getOrNull()?.size == 3 }
@@ -62,12 +61,12 @@ class WebRepositoryTest {
 
     @Test
     fun `get-todos-fail`() {
-        every { context.webClient }.invokes { webClient }
+        // every { context.webClient }.invokes { webClient }
 
         runBlocking {
             coEvery { webClient.get("todos/") }.invokes { Result.failure(Exception("x error")) }
 
-            val result = with(context) { GetTodos() }
+            val result = with(webClient) { GetTodos() }
 
             assertFalse { result.isSuccess }
             assertFails { result.getOrThrow() }
