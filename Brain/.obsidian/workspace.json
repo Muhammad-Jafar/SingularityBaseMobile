@@ -6,6 +6,7 @@
       {
         "id": "004b3e98e97318ac",
         "type": "tabs",
+        "dimension": 45.95323741007194,
         "children": [
           {
             "id": "9aa58e15a1edab4f",
@@ -79,13 +80,10 @@
             "id": "541f5bbd6846ca6f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ui flow dogma.md",
-                "mode": "source",
-                "source": false
-              }
-            }
+              "type": "graph",
+              "state": {}
+            },
+            "group": "8cbfda8a4c3bfafd"
           },
           {
             "id": "926b5d23c7a82411",
@@ -125,6 +123,62 @@
           }
         ],
         "currentTab": 6
+      },
+      {
+        "id": "fd4c85ac50a80a19",
+        "type": "tabs",
+        "dimension": 54.04676258992806,
+        "children": [
+          {
+            "id": "07cc4ae955f7b792",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "composable function rule.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": true
+                }
+              }
+            },
+            "group": "8cbfda8a4c3bfafd"
+          },
+          {
+            "id": "bcf868016e100d99",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lambda capture state anti pattern.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -190,7 +244,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ui flow dogma.md",
+                "file": "lambda capture state anti pattern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -207,7 +261,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ui flow dogma.md",
+                "file": "lambda capture state anti pattern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -230,7 +284,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ui flow dogma.md"
+                "file": "lambda capture state anti pattern.md"
               }
             }
           }
@@ -251,13 +305,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "541f5bbd6846ca6f",
+  "active": "bcf868016e100d99",
   "lastOpenFiles": [
     "images/uiflow-dogma.svg",
     "images/uiflow-dogma.png",
     "lambda capture state anti pattern.md",
-    "separated control principle.md",
     "ui flow dogma.md",
+    "navigation fallback protocol.md",
+    "composable function rule.md",
+    "system token rule.md",
+    "max depth rule = 2.md",
+    "separated control principle.md",
     "event to intent translation layer.md",
     "composable component.md",
     "centralized context control.md",
@@ -266,7 +324,6 @@
     "lambda capture state antipatern.md",
     "images/uiflow-dogma.jpg",
     "images/Untitled.md",
-    "composable function rule.md",
     "Untitled",
     "stateless component.md",
     "pane.md",

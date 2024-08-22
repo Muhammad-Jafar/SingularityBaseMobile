@@ -1,3 +1,6 @@
 - [[max depth rule = 2]]
 - [[separated control principle]]
-- 
+- [[lambda capture state anti pattern]]
+- [[state cascading]]
+- [[event propagation]]
+- [[event to intent translation layer]]
