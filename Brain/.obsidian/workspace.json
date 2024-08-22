@@ -98,9 +98,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "971274d68429b20a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "separated control principle.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 7
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -166,7 +178,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "centralized context control.md",
+                "file": "separated control principle.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -183,7 +195,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "centralized context control.md",
+                "file": "separated control principle.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -206,7 +218,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "centralized context control.md"
+                "file": "separated control principle.md"
               }
             }
           }
@@ -227,8 +239,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "926b5d23c7a82411",
+  "active": "971274d68429b20a",
   "lastOpenFiles": [
+    "ui flow dogma.md",
+    "separated control principle.md",
+    "event to intent translation layer.md",
+    "images/uiflow-dogma.png",
+    "images/uiflow-dogma.svg",
+    "images/uiflow-dogma.jpg",
+    "images/Untitled.md",
+    "composable function rule.md",
+    "Untitled",
     "event propagation.md",
     "stateless component.md",
     "pane.md",

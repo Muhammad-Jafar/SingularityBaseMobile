@@ -1,2 +1,3 @@
 - [[max depth rule = 2]]
+- [[separated control principle]]
 - 
