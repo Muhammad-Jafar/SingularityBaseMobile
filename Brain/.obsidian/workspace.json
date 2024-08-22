@@ -81,7 +81,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "composable component.md",
+                "file": "lambda capture state anti pattern.md",
                 "mode": "source",
                 "source": false
               }
@@ -105,14 +105,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "separated control principle.md",
+                "file": "event propagation.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0b194ffa4ef2cbde",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "state cascading.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -178,7 +190,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "separated control principle.md",
+                "file": "lambda capture state anti pattern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -195,7 +207,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "separated control principle.md",
+                "file": "lambda capture state anti pattern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -218,7 +230,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "separated control principle.md"
+                "file": "lambda capture state anti pattern.md"
               }
             }
           }
@@ -239,25 +251,28 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "971274d68429b20a",
+  "active": "541f5bbd6846ca6f",
   "lastOpenFiles": [
-    "ui flow dogma.md",
     "separated control principle.md",
+    "ui flow dogma.md",
     "event to intent translation layer.md",
+    "composable component.md",
+    "centralized context control.md",
+    "event propagation.md",
+    "state cascading.md",
+    "lambda capture state anti pattern.md",
+    "lambda capture state antipatern.md",
     "images/uiflow-dogma.png",
     "images/uiflow-dogma.svg",
     "images/uiflow-dogma.jpg",
     "images/Untitled.md",
     "composable function rule.md",
     "Untitled",
-    "event propagation.md",
     "stateless component.md",
     "pane.md",
     "navigation.md",
     "explicit dependency injection.md",
     "contextual programming.md",
-    "composable component.md",
-    "centralized context control.md",
     "images/Centralized Context Control.jpg",
     "stateless.md",
     "images",

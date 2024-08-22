@@ -15,7 +15,7 @@ fun ToggleButton(onStateChange: (selected: Boolean) -> Unit) {
 	}
 }
 ```
-Note: the pattern above also involve the [[lambda capture state antipattern]]
+Note: the pattern above also involve the [[lambda capture state anti pattern]]
 
 ✅ Correct: The state is separated - make it easy to control the component state
 ```kotlin
