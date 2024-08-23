@@ -6,7 +6,7 @@
       {
         "id": "004b3e98e97318ac",
         "type": "tabs",
-        "dimension": 45.95323741007194,
+        "dimension": 57.46402877697842,
         "children": [
           {
             "id": "9aa58e15a1edab4f",
@@ -82,7 +82,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ui flow dogma.md",
+                "file": "event to intent translation layer.md",
                 "mode": "source",
                 "source": false
               }
@@ -131,7 +131,7 @@
       {
         "id": "fd4c85ac50a80a19",
         "type": "tabs",
-        "dimension": 54.04676258992806,
+        "dimension": 42.53597122302158,
         "children": [
           {
             "id": "07cc4ae955f7b792",
@@ -139,7 +139,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "ui flow dogma.md",
+                "file": "event to intent translation layer.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -235,7 +235,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ui flow dogma.md",
+                "file": "event to intent translation layer.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -252,7 +252,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ui flow dogma.md",
+                "file": "event to intent translation layer.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -275,7 +275,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ui flow dogma.md"
+                "file": "event to intent translation layer.md"
               }
             }
           }
@@ -298,12 +298,15 @@
   },
   "active": "541f5bbd6846ca6f",
   "lastOpenFiles": [
+    "images/event to intent translation layer.png",
+    "ui flow dogma vs state world hypothesis.md",
     "images/uiflow dogma vs state world hypothesis.svg",
     "images/uiflow dogma vs state world hypothesis.png",
+    "images/uiflow dogma vs state world hypothesis 1.svg",
+    "images/uiflow dogma vs state world hypothesis 1.png",
     "images/uiflow-dogma.png",
     "images/uiflow-dogma.svg",
     "lambda capture state anti pattern.md",
-    "ui flow dogma.md",
     "navigation fallback protocol.md",
     "composable function rule.md",
     "system token rule.md",
