@@ -82,7 +82,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "event to intent translation layer.md",
+                "file": "ui flow dogma vs state world hypothesis.md",
                 "mode": "source",
                 "source": false
               }
@@ -139,7 +139,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "event to intent translation layer.md",
+                "file": "ui flow dogma vs state world hypothesis.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -235,7 +235,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "event to intent translation layer.md",
+                "file": "ui flow dogma vs state world hypothesis.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -252,7 +252,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "event to intent translation layer.md",
+                "file": "ui flow dogma vs state world hypothesis.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -275,7 +275,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "event to intent translation layer.md"
+                "file": "ui flow dogma vs state world hypothesis.md"
               }
             }
           }
@@ -298,6 +298,7 @@
   },
   "active": "541f5bbd6846ca6f",
   "lastOpenFiles": [
+    "event to intent translation layer.md",
     "images/event to intent translation layer.png",
     "ui flow dogma vs state world hypothesis.md",
     "images/uiflow dogma vs state world hypothesis.svg",
@@ -312,7 +313,6 @@
     "system token rule.md",
     "max depth rule = 2.md",
     "separated control principle.md",
-    "event to intent translation layer.md",
     "composable component.md",
     "centralized context control.md",
     "event propagation.md",
