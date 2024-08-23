@@ -1,4 +1,4 @@
-![[uiflow-dogma.png]]
+![[uiflow dogma vs state world hypothesis.png]]
 # keypoint
 - [[separated control principle]]
 - [[intent]]

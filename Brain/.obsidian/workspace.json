@@ -80,8 +80,12 @@
             "id": "541f5bbd6846ca6f",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "ui flow dogma.md",
+                "mode": "source",
+                "source": false
+              }
             },
             "group": "8cbfda8a4c3bfafd"
           },
@@ -135,7 +139,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "composable function rule.md",
+                "file": "ui flow dogma.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -164,21 +168,8 @@
               }
             },
             "group": "8cbfda8a4c3bfafd"
-          },
-          {
-            "id": "bcf868016e100d99",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "lambda capture state anti pattern.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -244,7 +235,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "lambda capture state anti pattern.md",
+                "file": "ui flow dogma.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -261,7 +252,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "lambda capture state anti pattern.md",
+                "file": "ui flow dogma.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -284,7 +275,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "lambda capture state anti pattern.md"
+                "file": "ui flow dogma.md"
               }
             }
           }
@@ -305,10 +296,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "bcf868016e100d99",
+  "active": "541f5bbd6846ca6f",
   "lastOpenFiles": [
-    "images/uiflow-dogma.svg",
+    "images/uiflow dogma vs state world hypothesis.svg",
+    "images/uiflow dogma vs state world hypothesis.png",
     "images/uiflow-dogma.png",
+    "images/uiflow-dogma.svg",
     "lambda capture state anti pattern.md",
     "ui flow dogma.md",
     "navigation fallback protocol.md",
