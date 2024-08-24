@@ -3,6 +3,7 @@ package main
 import ProjectConfig
 import main.modules.TodoListWebRepositoryContext
 import ai_chat.Context as AIChatContext
+import authentication.Context as AuthenticationContext
 import dashboard.Context as DashboardContext
 import todolist.Context as TodoListContext
 
@@ -30,5 +31,9 @@ class MainContext {
             todoListContext = todoListContext,
             aiChatContext = aiChatContext,
         )
+    }
+
+    val authenticationContext: AuthenticationContext by lazy {
+        AuthenticationContext()
     }
 }

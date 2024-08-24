@@ -9,6 +9,7 @@ interface Platform {
 }
 
 fun Platform.isAndroid() = name.contains("android", true)
+
 fun Platform.isIOS() = name.contains("ios", true)
 
 fun Platform.isWeb() = name.contains("web", true)

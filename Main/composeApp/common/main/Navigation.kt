@@ -4,33 +4,47 @@
  */
 package main
 
+import LoginRoute
 import ai_chat.pane.aichat.AIChatPane
 import ai_chat.pane.aichat.AIChatPanePld
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import authentication.LoginPane
 import common.StateSaver
 import core.ui.SingularityScope
+import dashboard.DashboardRoute
 import dashboard.pane.dashboard.DashboardPane
 import todolist.pane.tododetail.TodoDetailPane
 import todolist.pane.tododetail.TodoDetailPanePld
 
 context(SingularityScope, MainContext)
 @Composable
-fun MainNavigation() {
-    val stateSaver = remember { StateSaver() }
-    val navController = rememberNavController()
-
+fun MainNavigation(
+    navController: NavHostController,
+    stateSaver: StateSaver,
+) {
     NavHost(
         navController = navController,
-        startDestination = "dashboard",
+        startDestination = LoginRoute.ROUTE,
     ) {
+        composable(LoginRoute.ROUTE) {
+            with(authenticationContext) {
+                LoginPane(
+                    onLoginSuccess = {
+                        val destination = DashboardRoute()
+                        navController.navigate(destination.route())
+                    },
+                )
+            }
+        }
+
         composable(
-            route = "dashboard",
+            route = DashboardRoute.ROUTE,
         ) {
             with(dashboardContext) {
                 DashboardPane(

@@ -6,7 +6,7 @@
       {
         "id": "004b3e98e97318ac",
         "type": "tabs",
-        "dimension": 57.46402877697842,
+        "dimension": 73.20143884892086,
         "children": [
           {
             "id": "9aa58e15a1edab4f",
@@ -80,12 +80,8 @@
             "id": "541f5bbd6846ca6f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ui flow dogma vs state world hypothesis.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "graph",
+              "state": {}
             },
             "group": "8cbfda8a4c3bfafd"
           },
@@ -131,7 +127,7 @@
       {
         "id": "fd4c85ac50a80a19",
         "type": "tabs",
-        "dimension": 42.53597122302158,
+        "dimension": 26.798561151079138,
         "children": [
           {
             "id": "07cc4ae955f7b792",
@@ -235,7 +231,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ui flow dogma vs state world hypothesis.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -252,7 +247,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ui flow dogma vs state world hypothesis.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -274,9 +268,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "ui flow dogma vs state world hypothesis.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -298,33 +290,34 @@
   },
   "active": "541f5bbd6846ca6f",
   "lastOpenFiles": [
-    "images/event to intent translation layer.png",
     "ui flow dogma vs state world hypothesis.md",
-    "images/uiflow dogma vs state world hypothesis.svg",
     "images/uiflow dogma vs state world hypothesis.png",
+    "images/uiflow dogma vs state world hypothesis.svg",
+    "centralized context control.md",
+    "composable function rule.md",
+    "event propagation.md",
     "event to intent translation layer.md",
+    "explicit dependency injection.md",
+    "max depth rule = 2.md",
+    "navigation.md",
+    "navigation fallback protocol.md",
+    "pane.md",
+    "parallel network call.md",
+    "stateless component.md",
+    "images/event to intent translation layer.png",
     "images/uiflow dogma vs state world hypothesis 1.svg",
     "images/uiflow dogma vs state world hypothesis 1.png",
     "images/uiflow-dogma.png",
     "images/uiflow-dogma.svg",
     "lambda capture state anti pattern.md",
-    "navigation fallback protocol.md",
-    "composable function rule.md",
     "system token rule.md",
-    "max depth rule = 2.md",
     "separated control principle.md",
     "composable component.md",
-    "centralized context control.md",
-    "event propagation.md",
     "state cascading.md",
     "lambda capture state antipatern.md",
     "images/uiflow-dogma.jpg",
     "images/Untitled.md",
     "Untitled",
-    "stateless component.md",
-    "pane.md",
-    "navigation.md",
-    "explicit dependency injection.md",
     "contextual programming.md",
     "images/Centralized Context Control.jpg",
     "stateless.md",

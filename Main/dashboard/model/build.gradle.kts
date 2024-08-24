@@ -1,3 +1,4 @@
+import plugin.convention.companion.System
 import plugin.convention.companion.model
 
 plugins {
@@ -11,6 +12,8 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
+            System("core")
+
             model("ai_chat")
             model("todolist")
         }
